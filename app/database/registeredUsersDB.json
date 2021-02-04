@@ -1,0 +1,15 @@
+{
+    "registered": {
+        "translators": [
+            {
+                "translator123": "123"
+            }
+
+        ],
+        "admins": [
+            {
+                "admin": "12345"
+            }
+        ]
+    }
+}
