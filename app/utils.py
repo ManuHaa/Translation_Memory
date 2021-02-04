@@ -47,4 +47,13 @@ def getNumberOfRegisteredWords():
         
     return len(dbData['words'])
 
+def getDBData(dbName):
+    dbFile = open(getDBPath(dbName), "r")
+    dbData = json.load(dbFile)
+    dbFile.close()
+
+    return dbData
+
+
+
 

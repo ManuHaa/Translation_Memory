@@ -2,7 +2,7 @@
 import json
 import array
 import os
-from utils import getDBPath, generate_uuid, getNumberOfAddedWords,getNumberOfRegisteredWords
+from utils import getDBPath, generate_uuid, getNumberOfAddedWords,getNumberOfRegisteredWords, getDBData
 
 
         
@@ -12,9 +12,7 @@ class User:
         newWord = {
             word:generate_uuid()
         }
-        dbFile = open(getDBPath("words"), "r")
-        dbData = json.load(dbFile)
-        dbFile.close()
+        dBData = getDBData("words")
         
         wordsArr = dbData['words']
         for obj in wordsArr:
@@ -57,9 +55,7 @@ class User:
         pass
 
     def searchWord(self, word:str):
-        dbFile = open(getDBPath("words"), "r")
-        dbData = json.load(dbFile)
-        dbFile.close()
+        dbData = getDBData("words")
         
         wordsArr = dbData['words']
 

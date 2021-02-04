@@ -1,0 +1,20 @@
+{
+    "words": [{
+        "hallo": {
+            "id": "83726428764",
+            "translationState": "100",
+            "translations": {
+                "Englisch": "hello",
+                "spanisch": "hola"
+            }
+        },
+        "Bus": {
+            "id": "3489534",
+            "translationState": "50",
+            "translations": {
+                "Englisch": "bus",
+                "spanisch": ""
+            }
+        }
+    }]
+}
