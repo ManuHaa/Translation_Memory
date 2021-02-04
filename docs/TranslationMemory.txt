@@ -1,0 +1,55 @@
+Mit Übersetzer, Admin und User sind sowohl männliche als auch weibliche Personen gemeint.
+
+Aufgabe Übersetzungen Datenbank:
+
+Zum Nachschlagen von Übersetzungen einzelner Wörter in anderen Sprachen soll eine Software Applikation aufgebaut werden.
+Für diese Art von Applikation soll es drei unterschiedliche Rollen geben, den User, der Übersetzer und den Admin.
+
+Der User kann nach Wörtern suchen und bekommt dann die Übersetzungen in den vorhandenen Sprachen, 
+sofern die Übersetzung dafür vorhanden ist. Ansonsten wird an der Sprache der Text (Keine) angezeigt, bspw.:
+
+Deutsch: Wasser
+English: Water
+Italiano: Acqua
+Español: (Keine)
+
+Der Einfachheit halber hat jedes Wort in jeder Sprache nur eine Übersetzung, auch wenn das faktisch falsch ist, 
+wie am Beispiel Schloss erkennbar:
+
+- Schloss (deutsch)
+- Castle (english)
+- Palace (english)
+- lock (english)
+
+Wenn ein Benutzer ein Wort sucht, dieses allerdings nicht vorhanden ist, hat dieser die Möglichkeit das Wort anzulegen.
+Ein Wort besteht aus einer ID und dem Wort. Wörter bestehen lediglich aus Buchstaben. 
+Am User soll gespeichert werden, wie viele Wörter dieser angelegt hat.
+Der User hat die Möglichkeit sich anzeigen zu lassen, wie viele Wörter dieser angelegt hat.
+Der User hat die Möglichkeit anzeigen zu lassen, wie viele Wörter insgesamt in der Datenbank vorhanden sind.
+Dabei soll ebenso angezeigt werden, wie viele davon zu 100%, also in allen Sprachen, übersetzt sind.
+
+Ein Übersetzer hat die Möglichkeit sich Wörter auflisten, bei denen Übersetzungen fehlen.
+Bei der Auflistung der Wörter wird der prozentuale Grad der vorhandenen Übersetzungen anzeigt, bspw.:
+
+- Wasser (66 %)
+
+Für die einzelnen Wörter kann der Übersetzer dann in den jeweiligen Sprachen, die Übersetzung einpflegen.
+Wenn ein Wort in allen Sprachen übersetzt ist, wird das Wort nicht in der Auflistung gezeigt.
+Übersetzer haben lediglich die Möglichkeit die Übersetzungen für die Sprachen einzupflegen, für welche sie berechtigt sind.
+Am Übersetzer soll dauerhaft gespeichert werden, wie viele Übersetzungen dieser eingepflegt hat.
+Der Übersetzer kann sich diese Zahl anzeigen lassen.
+Inhaltlich hat der Übersetzer ebenso die gleichen Möglichkeiten wie der User.
+
+Der Übersetzer muss sich entsprechend an der Software anmelden können, hierfür benötigt der Admin einen Benutzernamen
+und ein Passwort. Für das Anmelden an der Applikation reicht lediglich eine Eingabemaske mit 
+Benutzername und Passwort. Benutzername und Passwort können hardcodiert im Quellcode überprüft werden, bspw. (translator/9876).Der Admin hat die Möglichkeit neue Sprachen für die Applikation anzulegen und nach Wörtern und deren Übersetzungen zu suchen.
+Darüber hinaus ist der Admin berechtigt dem Übersetzer eine Sprache zuzuweisen. Damit dieser Übersetzungen einpflegen kann.
+Eine Sprache hat eine eindeutige ID und einen Namen.
+
+Der Admin muss sich entsprechend an der Software anmelden können, hierfür benötigt der Admin einen Benutzernamen
+und ein Passwort. Für das Anmelden an der Applikation reicht lediglich eine Eingabemaske mit 
+Benutzername und Passwort. Benutzername und Passwort können hardcodiert im Quellcode überprüft werden, bspw. (admin/1234).
+
+Die Loginmaske ist für den Übersetzer und den Admin genau dieselbe, lediglich über den Benutzer wird ermittelt, 
+welcher Benutzertyp angemeldet ist.
+
