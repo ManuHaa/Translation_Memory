@@ -1,24 +1,82 @@
 
+import json
+import array
+import os
+from utils import getDBPath, generate_uuid, getNumberOfAddedWords,getNumberOfRegisteredWords
 
+
+        
 class User:
-    
-    def __init__(self, addedWords):
-        self._addedWords = addedWords
+        
+    def addWord(self, word):
+        newWord = {
+            word:generate_uuid()
+        }
+        dbFile = open(getDBPath("words"), "r")
+        dbData = json.load(dbFile)
+        dbFile.close()
+        
+        wordsArr = dbData['words']
+        for obj in wordsArr:
+                for k,v in obj.items():
+                    if k == word:
+                        exists = True
+                    else:
+                        exists = False
+                        
+        if exists == False:
+            wordsArr.append(newWord)
+            dbFile = open(getDBPath("words"), "w")
+            dbFile.write(json.dumps(dbData, indent=4, sort_keys=True))
+            dbFile.close()
+            print("Das Wort wurde hinzugefügt.")
 
-    def addWord(self):
-        pass
+            dbFile = open(getDBPath("user"), "r")
+            dbData = json.load(dbFile)
+            dbFile.close()
 
-    def getNumberOfAddedWords(self):
-        pass
+            dbData['addedWords'] = dbData['addedWords'] + 1
 
-    def getNumberOfRegisteredWords(self):
-        pass
+            dbFile = open(getDBPath("user"), "w")
+            dbFile.write(json.dumps(dbData, indent=4, sort_keys=True))
+            dbFile.close()
+
+            return True
+            
+        else:
+            print("Das eingegebene Wort existiert bereits.")
+            return False        
+
+    def showNumberOfAddedWords(self):
+        print("Hinzugefügte Worte: " + str(getNumberOfAddedWords()))
+
+    def showNumberOfRegisteredWords(self):
+        print("Alle registrierten Worte: " + str(getNumberOfRegisteredWords()))
 
     def getNumberOfCompleteTranslatedWords(self):
         pass
 
-    def searchWord(self):
-        pass
+    def searchWord(self, word:str):
+        dbFile = open(getDBPath("words"), "r")
+        dbData = json.load(dbFile)
+        dbFile.close()
+        
+        wordsArr = dbData['words']
 
-    def say(self):
-        print("I'm from another world!")
+        for obj in wordsArr:
+            if word in obj:
+                print(word)
+            else:
+                print("no")
+
+
+        
+        
+
+
+
+
+
+
+
+

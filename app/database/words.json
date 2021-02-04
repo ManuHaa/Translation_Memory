@@ -1,3 +1,25 @@
 {
-    "Hallo": "2893643246"
+    "words": [
+        {
+            "bye": "52613194-5cbc-47eb-84a8-c1a5b5b9f4db"
+        },
+        {
+            "ciao": "0a4ebde7-9cb3-409a-ba2c-13efb6d58c96"
+        },
+        {
+            "Himmel": "4a0ca142-896e-41aa-8a03-1b54fdf9092b"
+        },
+        {
+            "Boden": "e38e2e35-05bf-4a4a-a81e-94a2d7ec486a"
+        },
+        {
+            "Kirche": "d068b302-e4c3-4ab1-a4da-66c584ae0335"
+        },
+        {
+            "Holland": "c2ed86ad-50a8-411b-99bb-8f89cd7aba88"
+        },
+        {
+            "Deutschland": "f9f0770d-ee7d-46fe-a5ff-b7779cfd9e6f"
+        }
+    ]
 }
