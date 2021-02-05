@@ -1,7 +1,9 @@
 from authentication import Atuhtenticator
 from utils import *
+from userOperator import UserOperator
 import sys
 auth = Atuhtenticator()
+user = UserOperator()
 
 class LoginMask:
 
