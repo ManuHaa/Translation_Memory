@@ -13,7 +13,7 @@ def getDBPath(dbName: str):
     elif dbName == "languages":
         return basePath + "/database/languagesDB.json"
     elif dbName == "registered":
-        return basePath + "/database/registeredUserDB.json"
+        return basePath + "/database/registeredUsersDB.json"
     else:
         return basePath + "/database/policiesDB.json"
 
@@ -54,3 +54,12 @@ def getDBData(dbName):
     dbFile.close()
 
     return dbData
+
+def checkIfPairInDict(key, value, dictionary):
+    if key in dictionary and value == dictionary[key]:
+        return True
+    else:
+        return False
+
+def killExec(state):
+    state = False
