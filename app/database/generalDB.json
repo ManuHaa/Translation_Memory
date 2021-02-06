@@ -1,6 +1,6 @@
 {
-    "words": [{
-        "hallo": {
+    
+        "Hallo": {
             "id": "83726428764",
             "translationState": "100",
             "translations": {
@@ -16,5 +16,5 @@
                 "spanisch": ""
             }
         }
-    }]
+    
 }

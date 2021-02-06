@@ -2,9 +2,10 @@
 import os
 import json
 import uuid
+from pathlib import Path
 
 uuids = []
-basePath = os.path.dirname(os.path.abspath(__file__))
+basePath =  str(Path(__file__).parent.parent)
 
 
 def getDBPath(dbName: str):
@@ -14,6 +15,8 @@ def getDBPath(dbName: str):
         return basePath + "/database/languagesDB.json"
     elif dbName == "registered":
         return basePath + "/database/registeredUsersDB.json"
+    elif dbName == "words":
+        return basePath + "/database/wordsDB.json"
     else:
         return basePath + "/database/policiesDB.json"
 
