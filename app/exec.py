@@ -1,7 +1,7 @@
 
-from authentication import Atuhtenticator
-from login import LoginMask
-from userOperator import UserOperator
+from login.authentication import Atuhtenticator
+from login.login import LoginMask
+from operators.userOperator import UserOperator
 auth = Atuhtenticator()
 login = LoginMask()
 user = UserOperator()

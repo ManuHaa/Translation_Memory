@@ -1,6 +1,6 @@
-from authentication import Atuhtenticator
+from login.authentication import Atuhtenticator
 from utils import *
-from userOperator import UserOperator
+from operators.userOperator import UserOperator
 import sys
 auth = Atuhtenticator()
 user = UserOperator()

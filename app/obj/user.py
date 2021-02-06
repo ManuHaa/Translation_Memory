@@ -12,7 +12,9 @@ class User:
         #self._addedWords = addedWords
 
     def addWord(self):
-        pass
+        dbData = getDBData("general")
+        dbData.update({ "wort" : { "bla": "bla"}})
+        print(dbData)
 
     def getNumberOfRegisteredWords(self):
         dbData = getDBData("general")
