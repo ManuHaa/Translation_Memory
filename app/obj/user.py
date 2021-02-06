@@ -28,8 +28,7 @@ class User:
 
     def getNumberOfRegisteredWords(self):
         dbData = getDBData("general")
-        for k, v in dbData.items():
-            return len(v)
+        return len(dbData)
 
     def showNumberOfRegisteredWords(self):
         print("Anzahl registrierter Wörter: " + str(User.getNumberOfRegisteredWords(self)))
