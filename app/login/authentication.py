@@ -7,7 +7,6 @@ class Atuhtenticator:
         key, val = username, password
 
         if checkIfPairInDict(key, val, dbData["translators"]):
-            print("yes")
             return True
         else:
             return False
@@ -17,7 +16,6 @@ class Atuhtenticator:
         key, val = username, password
 
         if checkIfPairInDict(key, val, dbData["admins"]):
-            print("yes")
             return True
         else:
             return False

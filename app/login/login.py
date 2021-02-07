@@ -2,17 +2,19 @@ from login.authentication import Atuhtenticator
 from utils import *
 from operators.userOperator import UserOperator
 import sys
+
 auth = Atuhtenticator()
 user = UserOperator()
+color = '\033[93m'
 
 class LoginMask:
 
     def loginMaskOperator(self):
         operator = { "operator" : None}
-        state = input("Wollen Sie sich anmelden oder als Benutzer fortfahren? (y/n)")
+        state = input(color + "TranslationMemory\nWilkommen! \nWollen Sie sich anmelden oder als Benutzer fortfahren? (y/n) \nEingabe: ")
         if state == "y":
-            un = input("Benutzername eingeben:")
-            pw = input("Passwort eingeben:")
+            un = input("Benutzername eingeben: ")
+            pw = input("Passwort eingeben: ")
             if auth.isTranslator(un, pw):
                 print("Wilkommen Translator!")
                 operator['operator'] = "translator"
@@ -31,7 +33,7 @@ class LoginMask:
                     print("Auf Wiedersehen!")
                     sys.exit()
         elif state == "n":
-            print("Hallo User!")
+            print("Wilkommen User!")
             operator['operator'] = "user"
             return operator
         else:
