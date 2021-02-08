@@ -6,6 +6,7 @@ import uuid
 uuids = []
 basePath = os.path.dirname(os.path.abspath(__file__))
 
+letterPattern = '[a-zA-Z]'
 
 def getDBPath(dbName: str):
     if dbName == "general":
@@ -54,6 +55,11 @@ def getDBData(dbName):
     dbFile.close()
 
     return dbData
+
+def saveDBData(dbName, dictData):
+    dbFile = open(getDBPath(dbName), "w")
+    dbFile.write(json.dumps(dictData, indent=4, sort_keys=True))
+    dbFile.close()
 
 def checkIfPairInDict(key, value, dictionary):
     if key in dictionary and value == dictionary[key]:
