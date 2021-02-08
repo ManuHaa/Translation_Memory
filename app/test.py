@@ -11,7 +11,7 @@ admin = Admin()
 translator = Translator()
 
 
-translator.getTranslations()
+translator.addTranslation("Hallo", "Australisch", "hello")
 
 
 

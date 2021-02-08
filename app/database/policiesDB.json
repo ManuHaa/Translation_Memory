@@ -1,5 +1,6 @@
 {
     "superdupernator": {
+        "password": "sdp2",
         "authLanguages": [
             "Englisch",
             "Franzoesisch",
@@ -7,6 +8,7 @@
         ]
     },
     "translator123": {
+        "password": "12345",
         "authLanguages": [
             "Englisch",
             "Spanisch",

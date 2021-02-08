@@ -117,6 +117,15 @@ def calculateTranslationState():
         
     saveDBData("general", generalDBData)
 
+def isRegistered(self, username, password):
+    dbData = getDBData("registered")
+    translators = dbData["translators"]
+    admins = dbData["admins"]
+    key, val = username, password
+
+    if checkIfPairInDict(key, val, admins) or checkIfPairInDict(key, val, translators):
+        print("yes")
+
     
         
                 
