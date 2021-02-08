@@ -1,6 +1,17 @@
 {
+    "superdupernator": {
+        "authLanguages": [
+            "Englisch",
+            "Franzoesisch",
+            "Australisch"
+        ]
+    },
     "translator123": {
-        "password": "123",
-        "authLanguages": ["englisch"]
+        "authLanguages": [
+            "Englisch",
+            "Spanisch",
+            "Italienisch",
+            "Japanisch"
+        ]
     }
 }

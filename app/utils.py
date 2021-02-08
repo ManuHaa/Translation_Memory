@@ -8,7 +8,7 @@ basePath = os.path.dirname(os.path.abspath(__file__))
 
 letterPattern = '[a-zA-Z]'
 
-state = input("TranslationMemory\nWilkommen! \nWollen Sie sich anmelden oder als Benutzer fortfahren? (y/n) \nEingabe: ")
+#state = input("TranslationMemory\nWilkommen! \nWollen Sie sich anmelden oder als Benutzer fortfahren? (y/n) \nEingabe: ")
 
 def getDBPath(dbName: str):
     if dbName == "general":

@@ -58,6 +58,11 @@ def getDBData(dbName):
 
     return dbData
 
+def saveDBData(dbName, dictData):
+    dbFile = open(getDBPath(dbName), "w")
+    dbFile.write(json.dumps(dictData, indent=4, sort_keys=True))
+    dbFile.close()
+
 def checkIfPairInDict(key, value, dictionary):
     if key in dictionary and value == dictionary[key]:
         return True

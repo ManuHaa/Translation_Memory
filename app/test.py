@@ -7,16 +7,10 @@ auth = Atuhtenticator()
 
 user = User()
 
-#user.addWord("Flugzeug")
+admin = Admin()
 
-pattern = '[a-zA-Z]'
-string = "hallo3"
-number = 1
+user.showNumberOfAddedWords()
 
-if string.isalpha():
-    print("yes")
-else:
-    print("no")
 
 
 
