@@ -10,7 +10,10 @@ from obj.user import User
 class Translator(User):
 
     def getUncompleteTranslatedWords(self):
-        pass
+        dbData = getDBData("general")
+        for word, data in dbData.items():
+            if data['translationState'] < 100:
+                print(str(word) + " " +str(data['translationState']) + "%")
 
     def isAuthorized(self, translatorName, language):
         dbData = getDBData("policies")
