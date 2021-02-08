@@ -1,4 +1,8 @@
-from user import User
+from obj.user import User
 
 user = User()
+
+class Translator(User):
+
+    x = 5
 

@@ -18,9 +18,12 @@ loopState = True
         #admin.operate()
 authenticatedPerson = None
 operator = login.loginMaskOperator()['operator']
-if operator == "user":
-    user.operate()
-elif operator == "admin":
-    admin.operate()
+
+
+while(loopState == True):
+    if operator == "admin":
+        admin.operate()
+    else:
+        user.operate()
 
         
