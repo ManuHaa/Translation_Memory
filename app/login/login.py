@@ -1,5 +1,5 @@
 from login.authentication import Atuhtenticator
-from utils import *
+from utils import state
 from operators.userOperator import UserOperator
 import sys
 
@@ -11,7 +11,7 @@ class LoginMask:
 
     def loginMaskOperator(self):
         operator = { "operator" : None}
-        state = input(color + "TranslationMemory\nWilkommen! \nWollen Sie sich anmelden oder als Benutzer fortfahren? (y/n) \nEingabe: ")
+        
         if state == "y":
             un = input("Benutzername eingeben: ")
             pw = input("Passwort eingeben: ")
