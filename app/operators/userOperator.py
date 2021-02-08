@@ -1,7 +1,5 @@
 import sys
-import os
 from pathlib import Path
-import re
 root = Path(__file__).parent.parent
 objPath = str(root) + '/obj'
 sys.path.insert(1, objPath)
@@ -15,7 +13,7 @@ class UserOperator:
         operation = input("Was möchten Sie tun?(1/2/3/4)\n 1. Nach einem Wort suchen\n 2. Anzahl angelegter Wörter anzeigen\n 3. Alle registrierten Wörter anzeigen lassen\n 4. Applikation schließen \n Eingabe: ")
         if operation.isdigit():
             if operation == "1":
-                word = input("Bitte geben Sie ein Wort ein.")
+                word = input("Bitte geben Sie ein Wort ein: ")
                 if word.isalpha(): 
                     if user.wordExists(word):
                         translation = user.showTranslations(word)

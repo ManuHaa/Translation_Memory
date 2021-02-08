@@ -1,33 +1,86 @@
 {
     "Bus": {
         "id": "3489534",
-        "translationState": "50",
+        "translationState": 12,
         "translations": {
+            "Australisch": "Keine",
+            "Deutsch": "Keine",
             "Englisch": "bus",
-            "spanisch": ""
+            "Franzoesisch": "Keine",
+            "Italienisch": "Keine",
+            "Japanisch": "Keine",
+            "Portugiesisch": "Keine",
+            "Spanisch": "Keine"
         }
     },
     "Flugzeug": {
         "id": "c1a08964-1f2a-48bb-bfb4-982475a50a41",
         "translationState": 0,
-        "translations": {}
+        "translations": {
+            "Australisch": "Keine",
+            "Deutsch": "Keine",
+            "Englisch": "Keine",
+            "Franzoesisch": "Keine",
+            "Italienisch": "Keine",
+            "Japanisch": "Keine",
+            "Portugiesisch": "Keine",
+            "Spanisch": "Keine"
+        }
     },
     "Hallo": {
         "id": "83726428764",
-        "translationState": "100",
+        "translationState": 25,
         "translations": {
+            "Australisch": "hello",
+            "Deutsch": "Keine",
             "Englisch": "hello",
-            "spanisch": "hola"
+            "Franzoesisch": "Keine",
+            "Italienisch": "Keine",
+            "Japanisch": "Keine",
+            "Portugiesisch": "Keine",
+            "Spanisch": "hola"
+        }
+    },
+    "Musik": {
+        "id": "a8859dce-5019-455c-9a20-5e124f20f38a",
+        "translationState": 0,
+        "translations": {
+            "Australisch": "Keine",
+            "Deutsch": "Keine",
+            "Englisch": "Keine",
+            "Franzoesisch": "Keine",
+            "Italienisch": "Keine",
+            "Japanisch": "Keine",
+            "Portugiesisch": "Keine",
+            "Spanisch": "Keine"
         }
     },
     "Sonnenschein": {
         "id": "e3ebc7f3-9a95-471d-b16a-40d7830d69c4",
         "translationState": 0,
-        "translations": {}
+        "translations": {
+            "Australisch": "Keine",
+            "Deutsch": "Keine",
+            "Englisch": "Keine",
+            "Franzoesisch": "Keine",
+            "Italienisch": "Keine",
+            "Japanisch": "Keine",
+            "Portugiesisch": "Keine",
+            "Spanisch": "Keine"
+        }
     },
     "Sternenhimmel": {
         "id": "a95c5eb7-001a-43a4-b764-abadfa52d4b9",
         "translationState": 0,
-        "translations": {}
+        "translations": {
+            "Australisch": "Keine",
+            "Deutsch": "Keine",
+            "Englisch": "Keine",
+            "Franzoesisch": "Keine",
+            "Italienisch": "Keine",
+            "Japanisch": "Keine",
+            "Portugiesisch": "Keine",
+            "Spanisch": "Keine"
+        }
     }
 }

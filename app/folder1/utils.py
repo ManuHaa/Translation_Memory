@@ -58,6 +58,11 @@ def getDBData(dbName):
 
     return dbData
 
+def saveDBData(dbName, dictData):
+    dbFile = open(getDBPath(dbName), "w")
+    dbFile.write(json.dumps(dictData, indent=4, sort_keys=True))
+    dbFile.close()
+
 def checkIfPairInDict(key, value, dictionary):
     if key in dictionary and value == dictionary[key]:
         return True
@@ -66,3 +71,12 @@ def checkIfPairInDict(key, value, dictionary):
 
 def killExec(state):
     state = False
+
+def calculateTranslationState():
+    pass
+
+def initLanguagesDBState():
+    languageDBData = getDBData("languages")
+    generalDBData = getDBData("general")
+
+    print(languageDBData)

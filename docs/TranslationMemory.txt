@@ -42,7 +42,8 @@ Inhaltlich hat der Übersetzer ebenso die gleichen Möglichkeiten wie der User.
 
 Der Übersetzer muss sich entsprechend an der Software anmelden können, hierfür benötigt der Admin einen Benutzernamen
 und ein Passwort. Für das Anmelden an der Applikation reicht lediglich eine Eingabemaske mit 
-Benutzername und Passwort. Benutzername und Passwort können hardcodiert im Quellcode überprüft werden, bspw. (translator/9876).Der Admin hat die Möglichkeit neue Sprachen für die Applikation anzulegen und nach Wörtern und deren Übersetzungen zu suchen.
+Benutzername und Passwort. Benutzername und Passwort können hardcodiert im Quellcode überprüft werden, bspw. (translator/9876).
+Der Admin hat die Möglichkeit neue Sprachen für die Applikation anzulegen und nach Wörtern und deren Übersetzungen zu suchen.
 Darüber hinaus ist der Admin berechtigt dem Übersetzer eine Sprache zuzuweisen. Damit dieser Übersetzungen einpflegen kann.
 Eine Sprache hat eine eindeutige ID und einen Namen.
 
