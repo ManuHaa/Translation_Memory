@@ -2,6 +2,7 @@
 import os
 import json
 import uuid
+import array
 
 uuids = []
 basePath = os.path.dirname(os.path.abspath(__file__))
@@ -71,3 +72,53 @@ def checkIfPairInDict(key, value, dictionary):
 
 def killExec(state):
     state = False
+
+def initAddedLanguagesDBState():
+    languages = getDBData("languages").keys()
+    generalDBData = getDBData("general")
+
+    for words, data in generalDBData.items():
+        translationDict = data["translations"]
+        print(translationDict)
+        if not translationDict:
+            for language in languages:
+                temp = { language: "Keine"}
+                translationDict.update(temp)
+    saveDBData("general", generalDBData)
+
+def initExistentLanguagesDBState():
+    languages = getDBData("languages").keys()
+    generalDBData = getDBData("general")
+
+    for words, data in generalDBData.items():
+        translationDict = data["translations"]
+        for language in languages:
+            if language not in translationDict.keys():
+                temp = { language: "Keine"}
+                translationDict.update(temp)
+    saveDBData("general", generalDBData)
+
+def calculateTranslationState():
+    generalDBData = getDBData("general")
+    for words, data in generalDBData.items():
+        translationDict = data["translations"]
+        translationState = data["translationState"]
+        arr = []
+        for key, value in translationDict.items():
+            arr.append(value)
+            numberLanguages = len(key)
+        noneObject = 0
+        for element in arr:
+            if element == "Keine":
+                noneObject += 1
+        
+        data['translationState'] = int(100 - round((noneObject/numberLanguages)*100, 0))
+        print(data['translationState'])
+        
+    saveDBData("general", generalDBData)
+
+    
+        
+                
+
+        

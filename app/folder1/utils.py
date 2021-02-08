@@ -71,3 +71,12 @@ def checkIfPairInDict(key, value, dictionary):
 
 def killExec(state):
     state = False
+
+def calculateTranslationState():
+    pass
+
+def initLanguagesDBState():
+    languageDBData = getDBData("languages")
+    generalDBData = getDBData("general")
+
+    print(languageDBData)

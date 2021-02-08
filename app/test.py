@@ -10,7 +10,8 @@ user = User()
 admin = Admin()
 translator = Translator()
 
-translator.showTranslations("Hallo")
+
+translator.getTranslations()
 
 
 
