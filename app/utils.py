@@ -18,6 +18,8 @@ def getDBPath(dbName: str):
         return basePath + "/database/languagesDB.json"
     elif dbName == "registered":
         return basePath + "/database/registeredUsersDB.json"
+    elif dbName == "words":
+        return basePath + "/database/wordsDB.json"
     else:
         return basePath + "/database/policiesDB.json"
 

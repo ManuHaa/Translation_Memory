@@ -21,6 +21,7 @@ class UserOperator:
                         state = input("Das eingegebene Wort existiert noch nicht. Wollen Sie es anlegen damit ein Übersetzer es übersetzen kann?(y/n)")
                         if state == "y":
                             user.addWord(word)
+                            user.updateUserAddedWords()
                             print("Das Wort wurde erfolgreich hinzugefügt!")
                 else:
                     print('Ihre Eingabe war leider kein valides Wort.')
