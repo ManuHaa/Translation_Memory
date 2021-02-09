@@ -4,7 +4,7 @@ from utils import getDBData, generate_uuid, saveDBData, initExistentLanguagesDBS
 
 class Admin(metaclass=Singleton):
 
-    def wordExists(self, word):
+    def wordExists(self, word: str):
         dbData = getDBData("general")
         words = dbData.keys()
         if word in words:
@@ -12,7 +12,7 @@ class Admin(metaclass=Singleton):
         else:
             return False
 
-    def getTranslationsOfWord(self, word):
+    def getTranslationsOfWord(self, word: str):
         dbData = getDBData("general")
         translations = []
         if Admin.wordExists(self, word):
@@ -25,7 +25,7 @@ class Admin(metaclass=Singleton):
                                 
         return translations
     
-    def addLanguage(self, language):
+    def addLanguage(self, language: str):
         dbData = getDBData("languages")
         newLanguageDict = { language: generate_uuid()}
         if language in dbData.keys():
@@ -35,7 +35,7 @@ class Admin(metaclass=Singleton):
             saveDBData("languages", dbData)
             initExistentLanguagesDBState()
 
-    def assignLanguage(self, translator, language):
+    def assignLanguage(self, translator: str, language: str):
         registeredUsersDBData = getDBData("registered")
         languagesDBData = getDBData("languages")
         policiesDBData = getDBData("policies")
@@ -57,7 +57,7 @@ class Admin(metaclass=Singleton):
         else:
             print("AdminError: Please contact the developer")
 
-    def showTranslations(self, word):
+    def showTranslations(self, word: str):
         translations = Admin.getTranslationsOfWord(self, word)
         if translations is None:
             print("Für dieses Wort wurden bisher keine Übersetzungen eingepflegt.")

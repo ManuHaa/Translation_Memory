@@ -1,3 +1,4 @@
+import sys
 from translator import Translator
 from pattern.singleton import Singleton
 

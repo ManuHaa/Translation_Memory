@@ -2,7 +2,7 @@ from utils import getDBData, checkIfPairInDict
 
 class Atuhtenticator:
     
-    def isTranslator(self, username, password):
+    def isTranslator(self, username: str, password: str):
         dbData = getDBData("registered")
         key, val = username, password
 
@@ -11,7 +11,7 @@ class Atuhtenticator:
         else:
             return False
 
-    def isAdmin(self, username, password):
+    def isAdmin(self, username: str, password: str):
         dbData = getDBData("registered")
         key, val = username, password
 
@@ -20,7 +20,7 @@ class Atuhtenticator:
         else:
             return False
 
-    def isRegistered(self, username, password):
+    def isRegistered(self, username: str, password: str):
         dbData = getDBData("registered")
         translators = dbData["translators"]
         admins = dbData["admins"]

@@ -4,7 +4,7 @@ from pattern.null_object import Null
 
 class User(metaclass=Singleton):
 
-    def addWord(self, word):
+    def addWord(self, word: str):
         dbData = getDBData("general")
         wordDict = {
             word: {
@@ -39,7 +39,7 @@ class User(metaclass=Singleton):
                 arr.append(translationState)
         return len(arr)
 
-    def wordExists(self, word):
+    def wordExists(self, word: str):
         dbData = getDBData("general")
         words = dbData.keys()
         if word in words:
@@ -47,7 +47,7 @@ class User(metaclass=Singleton):
         else:
             return False
 
-    def getTranslationsOfWord(self, word):
+    def getTranslationsOfWord(self, word: str):
         dbData = getDBData("general")
         translations = []
         if User.wordExists(self, word):
@@ -60,7 +60,7 @@ class User(metaclass=Singleton):
                                 
         return translations
 
-    def getNumberOfAddedWords(self, operator):
+    def getNumberOfAddedWords(self, operator: str):
         dbData = getDBData("words")
         for k,v in dbData.items():
             if k == "addedWords":
@@ -70,13 +70,13 @@ class User(metaclass=Singleton):
                 else:
                     return Null()
 
-    def showNumberOfAddedWords(self, operator):
+    def showNumberOfAddedWords(self, operator: str):
         print("Anzahl hinzugefügter Wörter: " + str(User.getNumberOfAddedWords(self, operator)))
 
     def showNumberOfRegisteredWords(self):
         print("Anzahl registrierter Wörter: " + str(User.getNumberOfRegisteredWords(self)) + "\nDavon ist/sind " + str(User.getNumberOfCompleteTranslatedWords(self)) + " Wort/Wörter komplett übersetzt.")
 
-    def showTranslations(self, word):
+    def showTranslations(self, word: str):
         translations = User.getTranslationsOfWord(self, word)
         
         print("Übersetzungen von dem Wort " + word + " : ")

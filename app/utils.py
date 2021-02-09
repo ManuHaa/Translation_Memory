@@ -40,7 +40,7 @@ def getDBPath(dbName: str):
         return basePath + "/database/policiesDB.json"
 
 #-returns data of reuired DB as dict
-def getDBData(dbName):
+def getDBData(dbName: str):
     dbFile = open(getDBPath(dbName), "r")
     dbData = json.load(dbFile)
     dbFile.close()
@@ -48,7 +48,7 @@ def getDBData(dbName):
     return dbData
 
 #-overwrites DB data
-def saveDBData(dbName, dictData):
+def saveDBData(dbName: str, dictData: dict):
     dbFile = open(getDBPath(dbName), "w")
     dbFile.write(json.dumps(dictData, indent=4, sort_keys=True))
     dbFile.close()
@@ -117,7 +117,7 @@ def calculateTranslationState():
     saveDBData("general", generalDBData)
 
 #-checks if user ist registered
-def isRegistered(self, username, password):
+def isRegistered(self, username: str, password: str):
     dbData = getDBData("registered")
     translators = dbData["translators"]
     admins = dbData["admins"]
@@ -128,7 +128,7 @@ def isRegistered(self, username, password):
 
 
 #-checks if the given dict contains the given key value pair
-def checkIfPairInDict(key, value, dictionary):
+def checkIfPairInDict(key: str, value: str, dictionary: dict):
     if key in dictionary and value == dictionary[key]:
         return True
     else:
