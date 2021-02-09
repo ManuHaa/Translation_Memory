@@ -37,6 +37,7 @@ class TranslatorOperator:
                 if state == "y":
                     word = input("Bitte geben Sie das zu bearbeitende Wort ein: ")
                     language = input("In welcher Sprache möchten Sie die Übersetzung einpflegen? ")
+                    print(translator)
                     if translator.isAuthorized(translator, language):
                         translation = input("Bitte geben Sie die Übersetzung an: ")
                         translator.addTranslation(word, language, translation)

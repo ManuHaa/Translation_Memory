@@ -1,4 +1,18 @@
 {
+    "Apfel": {
+        "id": "a321fcc5-befd-4f74-a768-a4ee135fad6a",
+        "translationState": 0,
+        "translations": {
+            "Australisch": "Keine",
+            "Deutsch": "Keine",
+            "Englisch": "Keine",
+            "Franzoesisch": "Keine",
+            "Italienisch": "Keine",
+            "Japanisch": "Keine",
+            "Portugiesisch": "Keine",
+            "Spanisch": "Keine"
+        }
+    },
     "Bus": {
         "id": "3489534",
         "translationState": 12,
