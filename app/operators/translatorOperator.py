@@ -15,7 +15,7 @@ class TranslatorOperator:
                 word = input("Bitte geben Sie ein Wort ein: ")
                 if word.isalpha():
                     if translator.wordExists(word):
-                        translation = user.showTranslations(word)
+                        translation = translator.showTranslations(word)
                     else:
                         state = input("Das eingegebene Wort existiert noch nicht. Wollen Sie es anlegen?(y/n)")
                         if state == "y":
