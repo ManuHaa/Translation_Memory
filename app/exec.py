@@ -3,10 +3,12 @@ from login.authentication import Atuhtenticator
 from login.login import LoginMask
 from operators.userOperator import UserOperator
 from operators.adminOperator import AdminOperator
+from operators.translatorOperator import TranslatorOperator
 auth = Atuhtenticator()
 login = LoginMask()
 user = UserOperator()
 admin = AdminOperator()
+translator = TranslatorOperator()
 
 loopState = True
 
@@ -21,8 +23,8 @@ operator = login.loginMaskOperator()['operator']
 
 
 while(loopState == True):
-    if operator == "admin":
-        admin.operate()
+    if operator == "translator":
+        translator.operate()
     else:
         user.operate()
 
