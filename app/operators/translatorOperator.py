@@ -41,11 +41,16 @@ class TranslatorOperator:
                     if translator.isAuthorized(currentUser, language):
                         translation = input("Bitte geben Sie die Übersetzung an: ")
                         translator.addTranslation(word, language, translation)
+                        translator.updateTranslatorTranslatedWords(currentUser)
                         print("Ihre Übersetzung wurde erfolgreich eingepflegt.")
                     else:
                         print("Sie sind leider nicht authorisiert für diese Sprache eine Übersetzung einzupflegen. Bitte sprechen Sie mit einem Admin.")
             elif operation == '5':
-                print("Sie haben bisher " )
+                username = input("Bitte geben Sie ihren Username ein: ")
+                if translator.getNumberOfTranslatedWords(username) is None:
+                    print("Sie haben Ihren Username falsch eingegeben oder der Übersetzer existiert nicht.")
+                else:
+                    translator.showNumberOfTranslatedWords(username)                
             else:
                 print("Auf Wiedersehen!")
                 sys.exit()
