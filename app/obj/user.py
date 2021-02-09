@@ -4,7 +4,8 @@ root = Path(__file__).parent.parent
 utilsPath = str(root) + '/folder1'
 sys.path.insert(1, utilsPath)
 from utils import getDBData, generate_uuid, saveDBData, initAddedLanguagesDBState, initExistentLanguagesDBState
-from design_patterns import Singleton
+from singleton import Singleton
+from null_object import Null
 
 class User(metaclass=Singleton):
 
@@ -84,6 +85,8 @@ class User(metaclass=Singleton):
                 for i,j in v.items():
                     if i == operator:
                         return j
+                else:
+                    return Null()
 
     def showNumberOfAddedWords(self, operator):
         print("Anzahl hinzugefügter Wörter: " + str(User.getNumberOfAddedWords(self, operator)))

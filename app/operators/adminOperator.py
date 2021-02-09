@@ -4,7 +4,7 @@ root = Path(__file__).parent.parent
 objPath = str(root) + '/obj'
 sys.path.insert(1, objPath)
 from admin import Admin
-from design_patterns import Singleton
+from singleton import Singleton
 
 admin = Admin()
 
