@@ -4,7 +4,7 @@ root = Path(__file__).parent.parent
 utilsPath = str(root) + '/folder1'
 sys.path.insert(1, utilsPath)
 
-from utils import getDBData, generate_uuid, saveDBData
+from utils import getDBData, generate_uuid, saveDBData, initExistentLanguagesDBState
 
 
 class Admin:
@@ -17,6 +17,7 @@ class Admin:
         else:
             dbData.update(newLanguageDict)
             saveDBData("languages", dbData)
+            initExistentLanguagesDBState()
     
     def wordExists(self, word):
         dbData = getDBData("general")

@@ -3,7 +3,7 @@ import sys
 root = Path(__file__).parent.parent
 utilsPath = str(root) + '/folder1'
 sys.path.insert(1, utilsPath)
-from utils import getDBData, generate_uuid, saveDBData
+from utils import getDBData, generate_uuid, saveDBData, initAddedLanguagesDBState, initExistentLanguagesDBState
 
 
 class User:
@@ -25,6 +25,7 @@ class User:
         dbData.update(wordDict)
         print(dbData)
         saveDBData("general", dbData)
+        initExistentLanguagesDBState()
 
     def getNumberOfRegisteredWords(self):
         dbData = getDBData("general")

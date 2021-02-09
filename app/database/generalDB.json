@@ -1,10 +1,22 @@
 {
+    "Apfel": {
+        "id": "a321fcc5-befd-4f74-a768-a4ee135fad6a",
+        "translationState": 0,
+        "translations": {
+            "Australisch": "Keine",
+            "Englisch": "Keine",
+            "Franzoesisch": "Keine",
+            "Italienisch": "Keine",
+            "Japanisch": "Keine",
+            "Portugiesisch": "Keine",
+            "Spanisch": "Keine"
+        }
+    },
     "Bus": {
         "id": "3489534",
         "translationState": 12,
         "translations": {
             "Australisch": "Keine",
-            "Deutsch": "Keine",
             "Englisch": "bus",
             "Franzoesisch": "Keine",
             "Italienisch": "Keine",
@@ -18,7 +30,6 @@
         "translationState": 0,
         "translations": {
             "Australisch": "Keine",
-            "Deutsch": "Keine",
             "Englisch": "Keine",
             "Franzoesisch": "Keine",
             "Italienisch": "Keine",
@@ -32,7 +43,6 @@
         "translationState": 25,
         "translations": {
             "Australisch": "hello",
-            "Deutsch": "Keine",
             "Englisch": "hello",
             "Franzoesisch": "Keine",
             "Italienisch": "Keine",
@@ -46,7 +56,6 @@
         "translationState": 0,
         "translations": {
             "Australisch": "Keine",
-            "Deutsch": "Keine",
             "Englisch": "Keine",
             "Franzoesisch": "Keine",
             "Italienisch": "Keine",
@@ -60,7 +69,6 @@
         "translationState": 0,
         "translations": {
             "Australisch": "Keine",
-            "Deutsch": "Keine",
             "Englisch": "Keine",
             "Franzoesisch": "Keine",
             "Italienisch": "Keine",
@@ -74,7 +82,6 @@
         "translationState": 0,
         "translations": {
             "Australisch": "Keine",
-            "Deutsch": "Keine",
             "Englisch": "Keine",
             "Franzoesisch": "Keine",
             "Italienisch": "Keine",
