@@ -24,10 +24,11 @@ class TranslatorOperator:
                 else:
                     print("Ihre EIngabe war leider kein valides Wort.")
             elif operation == "2":
-                if translator.showNumberOfAddedWords() is None:
-                    print("Sie haben bisher noch keine Wörter angelegt.")
+                username = input("Bitte geben sie Ihren Username an: ")
+                if translator.getNumberOfAddedWords(username) is None:
+                    print("Sie haben bisher noch keine Wörter angelegt oder den Username falsch eingetragen.")
                 else:
-                    translator.showNumberOfAddedWords()
+                    translator.showNumberOfAddedWords(username)
             elif operation == "3":
                 translator.showNumberOfRegisteredWords()
             elif operation == '4':

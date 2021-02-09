@@ -12,7 +12,7 @@ translator = Translator()
 
 
 #user.addWord("Vogel")
-print(user.getNumberOfCompleteTranslatedWords())
+print(translator.getNumberOfCompleteTranslatedWords())
 
 
 

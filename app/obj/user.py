@@ -80,16 +80,16 @@ class User:
     def say(self):
         print("I'm from another world!")
 
-    def getNumberOfAddedWords(self):
+    def getNumberOfAddedWords(self, operator):
         dbData = getDBData("words")
         for k,v in dbData.items():
             if k == "addedWords":
                 for i,j in v.items():
-                    if i =="user":
+                    if i == operator:
                         return j
 
-    def showNumberOfAddedWords(self):
-        print("Anzahl hinzugefügter Wörter: " + str(User.getNumberOfAddedWords(self)))
+    def showNumberOfAddedWords(self, operator):
+        print("Anzahl hinzugefügter Wörter: " + str(User.getNumberOfAddedWords(self, operator)))
 
     def updateUserAddedWords(self):
         wordsDBData = getDBData("words")

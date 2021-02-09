@@ -26,10 +26,10 @@ class UserOperator:
                 else:
                     print('Ihre Eingabe war leider kein valides Wort.')
             elif operation == '2':
-                if user.showNumberOfAddedWords() is None:
+                if user.showNumberOfAddedWords("user") is None:
                     print("Sie haben bisher noch keine Wörter angelegt.")
                 else:
-                    user.showNumberOfAddedWords()
+                    user.showNumberOfAddedWords("user")
             elif operation == '3': 
                 user.showNumberOfRegisteredWords()
             else:
