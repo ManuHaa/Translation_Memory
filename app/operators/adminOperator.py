@@ -4,10 +4,11 @@ root = Path(__file__).parent.parent
 objPath = str(root) + '/obj'
 sys.path.insert(1, objPath)
 from admin import Admin
+from design_patterns import Singleton
 
 admin = Admin()
 
-class AdminOperator:
+class AdminOperator(metaclass=Singleton):
 
     def operate(self):
         operation = input("Was möchten Sie tun?(1/2/3/4)\n 1. Nach einem Wort suchen\n 2. Eine Sprache anlegen\n 3. Einem Übersetzer eine Sprache zuweisen\n 4. Applikation schließen \n Eingabe: ")

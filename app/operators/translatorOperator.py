@@ -4,10 +4,11 @@ root = Path(__file__).parent.parent
 objPath = str(root) + '/obj'
 sys.path.insert(1, objPath)
 from translator import Translator
+from design_patterns import Singleton
 
 translator = Translator()
 
-class TranslatorOperator:
+class TranslatorOperator(metaclass=Singleton):
     def operate(self):
         operation = input("Was möchten Sie tun?(1/2/3/4/5/6)\n 1. Nach einem Wort suchen\n 2. Anzahl angelegter Wörter anzeigen\n 3. Alle registrierten Wörter anzeigen lassen\n 4. Unkomplette Übersetzungen auflisten lassen\n 5. Anzahl eigener Übersetzungen anzeigen lassen\n 6. Applikation schließen \n Eingabe: ")
         if operation.isdigit():

@@ -4,10 +4,11 @@ root = Path(__file__).parent.parent
 objPath = str(root) + '/obj'
 sys.path.insert(1, objPath)
 from user import User
+from design_patterns import Singleton
 
 user = User()
 
-class UserOperator:
+class UserOperator(metaclass=Singleton):
 
     def operate(self):
         operation = input("Was möchten Sie tun?(1/2/3/4)\n 1. Nach einem Wort suchen\n 2. Anzahl angelegter Wörter anzeigen\n 3. Alle registrierten Wörter anzeigen lassen\n 4. Applikation schließen \n Eingabe: ")
