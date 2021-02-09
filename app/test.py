@@ -11,7 +11,8 @@ admin = Admin()
 translator = Translator()
 
 
-translator.getUncompleteTranslatedWords()
+#user.addWord("Vogel")
+print(translator.getNumberOfCompleteTranslatedWords())
 
 
 

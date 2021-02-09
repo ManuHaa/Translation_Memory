@@ -39,6 +39,25 @@ class Translator(User):
         saveDBData("general", dbData)
         calculateTranslationState()
 
+    def getNumberOfTranslatedWords(self, translator):
+        dbData = getDBData("words")
+        for k,v in dbData.items():
+            if k == "translatedWords":
+                for i,j in v.items():
+                    if i == translator:
+                        return j
+
+    def updateTranslatorTranslatedWords(self, translator):
+        wordsDBData = getDBData("words")
+        addedWordsDict = wordsDBData['translatedWords']
+        addedWordsDict[translator] = addedWordsDict[translator]+1
+        
+        saveDBData("words", wordsDBData)
+
+    def showNumberOfTranslatedWords(self, translator):
+        print("Anzahl hinzugefügter Wörter: " + str(Translator.getNumberOfTranslatedWords(self, translator)))
+
+
                         
                 
         

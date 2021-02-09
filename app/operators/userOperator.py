@@ -21,14 +21,15 @@ class UserOperator:
                         state = input("Das eingegebene Wort existiert noch nicht. Wollen Sie es anlegen damit ein Übersetzer es übersetzen kann?(y/n)")
                         if state == "y":
                             user.addWord(word)
+                            user.updateUserAddedWords()
                             print("Das Wort wurde erfolgreich hinzugefügt!")
                 else:
                     print('Ihre Eingabe war leider kein valides Wort.')
             elif operation == '2':
-                if user.showNumberOfAddedWords() is None:
+                if user.showNumberOfAddedWords("user") is None:
                     print("Sie haben bisher noch keine Wörter angelegt.")
                 else:
-                    user.showNumberOfAddedWords()
+                    user.showNumberOfAddedWords("user")
             elif operation == '3': 
                 user.showNumberOfRegisteredWords()
             else:

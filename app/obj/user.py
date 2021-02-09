@@ -23,7 +23,6 @@ class User:
             }
         }
         dbData.update(wordDict)
-        print(dbData)
         saveDBData("general", dbData)
         initExistentLanguagesDBState()
 
@@ -32,11 +31,17 @@ class User:
         return len(dbData)
 
     def showNumberOfRegisteredWords(self):
-        print("Anzahl registrierter Wörter: " + str(User.getNumberOfRegisteredWords(self)))
+        print("Anzahl registrierter Wörter: " + str(User.getNumberOfRegisteredWords(self)) + "\nDavon ist/sind " + str(User.getNumberOfCompleteTranslatedWords(self)) + " Wort/Wörter komplett übersetzt.")
             
 
     def getNumberOfCompleteTranslatedWords(self):
-        pass
+        dbData = getDBData("general")
+        arr = []
+        for word, data in dbData.items():
+            translationState = data['translationState']
+            if translationState == 100:
+                arr.append(translationState)
+        return len(arr)
 
     def wordExists(self, word):
         dbData = getDBData("general")
@@ -75,15 +80,28 @@ class User:
     def say(self):
         print("I'm from another world!")
 
-    def getNumberOfAddedWords(self):
+    def getNumberOfAddedWords(self, operator):
         dbData = getDBData("words")
         for k,v in dbData.items():
             if k == "addedWords":
                 for i,j in v.items():
-                    if i =="user":
+                    if i == operator:
                         return j
 
-    def showNumberOfAddedWords(self):
-        print("Anzahl hinzugefügter Wörter: " + str(User.getNumberOfAddedWords(self)))
+    def showNumberOfAddedWords(self, operator):
+        print("Anzahl hinzugefügter Wörter: " + str(User.getNumberOfAddedWords(self, operator)))
+
+    def updateUserAddedWords(self):
+        wordsDBData = getDBData("words")
+        addedWordsDict = wordsDBData['addedWords']
+        addedWordsDict['user'] = addedWordsDict['user']+1
+        
+        saveDBData("words", wordsDBData)
+
+
+
+
+        
+
 
                 
