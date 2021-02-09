@@ -25,6 +25,7 @@ def generate_uuid():
     add_uuid(id)
     return id
 
+
 #-returns path of required DB file
 def getDBPath(dbName: str):
     if dbName == "general":
@@ -67,13 +68,6 @@ def getNumberOfRegisteredWords():
     dbFile.close()
         
     return len(dbData['words'])
-
-#-checks if the given dict contains the given key value pair
-def checkIfPairInDict(key, value, dictionary):
-    if key in dictionary and value == dictionary[key]:
-        return True
-    else:
-        return False
 
 #-initializes the language and general DB if languages added manually
 def initAddedLanguagesDBState():
@@ -131,6 +125,14 @@ def isRegistered(self, username, password):
 
     if checkIfPairInDict(key, val, admins) or checkIfPairInDict(key, val, translators):
         print("yes")
+
+
+#-checks if the given dict contains the given key value pair
+def checkIfPairInDict(key, value, dictionary):
+    if key in dictionary and value == dictionary[key]:
+        return True
+    else:
+        return False
 
     
         

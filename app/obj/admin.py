@@ -3,17 +3,7 @@ from utils import getDBData, generate_uuid, saveDBData, initExistentLanguagesDBS
 
 
 class Admin(metaclass=Singleton):
-    
-    def addLanguage(self, language):
-        dbData = getDBData("languages")
-        newLanguageDict = { language: generate_uuid()}
-        if language in dbData.keys():
-            print("Diese Sprache wurde bereits angelegt.")
-        else:
-            dbData.update(newLanguageDict)
-            saveDBData("languages", dbData)
-            initExistentLanguagesDBState()
-    
+
     def wordExists(self, word):
         dbData = getDBData("general")
         words = dbData.keys()
@@ -34,19 +24,16 @@ class Admin(metaclass=Singleton):
                                 translations.append(pair)
                                 
         return translations
-
-    def showTranslations(self, word):
-        translations = Admin.getTranslationsOfWord(self, word)
-        if translations is None:
-            print("Für dieses Wort wurden bisher keine Übersetzungen eingepflegt.")
+    
+    def addLanguage(self, language):
+        dbData = getDBData("languages")
+        newLanguageDict = { language: generate_uuid()}
+        if language in dbData.keys():
+            print("Diese Sprache wurde bereits angelegt.")
         else:
-            print("Übersetzungen von dem Wort " + word + " : ")
-            for tupel in translations:
-                language = tupel[0]
-                translation = tupel[1]
-                if not translation:
-                    translation = "Keine"
-                print(language + " - " + translation)
+            dbData.update(newLanguageDict)
+            saveDBData("languages", dbData)
+            initExistentLanguagesDBState()
 
     def assignLanguage(self, translator, language):
         registeredUsersDBData = getDBData("registered")
@@ -69,9 +56,16 @@ class Admin(metaclass=Singleton):
             print("Die eingegebene Sprache ist noch nicht registriert.")
         else:
             print("AdminError: Please contact the developer")
-                    
 
-            
-
-    def say(self):
-        print("I'm from another world!")
+    def showTranslations(self, word):
+        translations = Admin.getTranslationsOfWord(self, word)
+        if translations is None:
+            print("Für dieses Wort wurden bisher keine Übersetzungen eingepflegt.")
+        else:
+            print("Übersetzungen von dem Wort " + word + " : ")
+            for tupel in translations:
+                language = tupel[0]
+                translation = tupel[1]
+                if not translation:
+                    translation = "Keine"
+                print(language + " - " + translation)

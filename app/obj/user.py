@@ -19,14 +19,17 @@ class User(metaclass=Singleton):
         saveDBData("general", dbData)
         initExistentLanguagesDBState()
 
+    def updateUserAddedWords(self):
+        wordsDBData = getDBData("words")
+        addedWordsDict = wordsDBData['addedWords']
+        addedWordsDict['user'] = addedWordsDict['user']+1
+        
+        saveDBData("words", wordsDBData)
+
     def getNumberOfRegisteredWords(self):
         dbData = getDBData("general")
         return len(dbData)
-
-    def showNumberOfRegisteredWords(self):
-        print("Anzahl registrierter Wörter: " + str(User.getNumberOfRegisteredWords(self)) + "\nDavon ist/sind " + str(User.getNumberOfCompleteTranslatedWords(self)) + " Wort/Wörter komplett übersetzt.")
             
-
     def getNumberOfCompleteTranslatedWords(self):
         dbData = getDBData("general")
         arr = []
@@ -57,22 +60,6 @@ class User(metaclass=Singleton):
                                 
         return translations
 
-    def showTranslations(self, word):
-        translations = User.getTranslationsOfWord(self, word)
-        
-        print("Übersetzungen von dem Wort " + word + " : ")
-        for tupel in translations:
-            language = tupel[0]
-            translation = tupel[1]
-            if not translation:
-                translation = "Keine"
-            print(language + " - " + translation)
-        
-            
-
-    def say(self):
-        print("I'm from another world!")
-
     def getNumberOfAddedWords(self, operator):
         dbData = getDBData("words")
         for k,v in dbData.items():
@@ -86,17 +73,16 @@ class User(metaclass=Singleton):
     def showNumberOfAddedWords(self, operator):
         print("Anzahl hinzugefügter Wörter: " + str(User.getNumberOfAddedWords(self, operator)))
 
-    def updateUserAddedWords(self):
-        wordsDBData = getDBData("words")
-        addedWordsDict = wordsDBData['addedWords']
-        addedWordsDict['user'] = addedWordsDict['user']+1
+    def showNumberOfRegisteredWords(self):
+        print("Anzahl registrierter Wörter: " + str(User.getNumberOfRegisteredWords(self)) + "\nDavon ist/sind " + str(User.getNumberOfCompleteTranslatedWords(self)) + " Wort/Wörter komplett übersetzt.")
+
+    def showTranslations(self, word):
+        translations = User.getTranslationsOfWord(self, word)
         
-        saveDBData("words", wordsDBData)
-
-
-
-
-        
-
-
-                
+        print("Übersetzungen von dem Wort " + word + " : ")
+        for tupel in translations:
+            language = tupel[0]
+            translation = tupel[1]
+            if not translation:
+                translation = "Keine"
+            print(language + " - " + translation)

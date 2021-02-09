@@ -12,13 +12,13 @@ class LoginMask:
         operator = { "operator" : None}
         state = input("TranslationMemory\nWilkommen! \nWollen Sie sich anmelden oder als Benutzer fortfahren? (y/n) \nEingabe: ")
         if state == "y":
-            un = input("Benutzername eingeben: ")
-            pw = input("Passwort eingeben: ")
-            if auth.isTranslator(un, pw):
+            username = input("Benutzername eingeben: ")
+            password = input("Passwort eingeben: ")
+            if auth.isTranslator(username, password):
                 print("Wilkommen Translator!")
                 operator['operator'] = "translator"
                 return operator
-            elif auth.isAdmin(un, pw):
+            elif auth.isAdmin(username, password):
                 print("Wilkommen Admin!")
                 operator['operator'] = "admin"
                 return operator

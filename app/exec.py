@@ -4,7 +4,6 @@ from operators.userOperator import UserOperator
 from operators.adminOperator import AdminOperator
 from operators.translatorOperator import TranslatorOperator
 
-
 login = LoginMask()
 user = UserOperator()
 admin = AdminOperator()
