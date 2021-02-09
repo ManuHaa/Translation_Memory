@@ -4,12 +4,9 @@ root = Path(__file__).parent.parent
 utilsPath = str(root) + '/folder1'
 sys.path.insert(1, utilsPath)
 from utils import getDBData, generate_uuid, saveDBData, initAddedLanguagesDBState, initExistentLanguagesDBState
+from design_patterns import Singleton
 
-
-class User:
-    
-    #def __init__(self, addedWords):
-        #self._addedWords = addedWords
+class User(metaclass=Singleton):
 
     def addWord(self, word):
         dbData = getDBData("general")

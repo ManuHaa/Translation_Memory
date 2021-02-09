@@ -3,11 +3,11 @@ import sys
 root = Path(__file__).parent.parent
 utilsPath = str(root) + '/folder1'
 sys.path.insert(1, utilsPath)
-
+from design_patterns import Singleton
 from utils import getDBData, generate_uuid, saveDBData, initExistentLanguagesDBState
 
 
-class Admin:
+class Admin(metaclass=Singleton):
     
     def addLanguage(self, language):
         dbData = getDBData("languages")
