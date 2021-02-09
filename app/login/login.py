@@ -1,5 +1,4 @@
 from login.authentication import Atuhtenticator
-#from utils import state
 from operators.userOperator import UserOperator
 import sys
 

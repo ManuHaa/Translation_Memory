@@ -1,8 +1,3 @@
-import sys
-from pathlib import Path
-root = Path(__file__).parent.parent
-objPath = str(root) + '/obj'
-sys.path.insert(1, objPath)
 from translator import Translator
 from pattern.singleton import Singleton
 

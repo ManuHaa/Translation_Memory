@@ -1,8 +1,3 @@
-from pathlib import Path
-import sys
-root = Path(__file__).parent.parent
-utilsPath = str(root) + '/folder1'
-sys.path.insert(1, utilsPath)
 from utils import getDBData, generate_uuid, saveDBData, initAddedLanguagesDBState, initExistentLanguagesDBState
 from pattern.singleton import Singleton
 from pattern.null_object import Null

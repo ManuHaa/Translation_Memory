@@ -1,27 +1,12 @@
-
 import os
 import json
 import uuid
 import array
 
+
+#-base vars
 uuids = []
 basePath = os.path.dirname(os.path.abspath(__file__))
-
-letterPattern = '[a-zA-Z]'
-
-#state = input("TranslationMemory\nWilkommen! \nWollen Sie sich anmelden oder als Benutzer fortfahren? (y/n) \nEingabe: ")
-
-def getDBPath(dbName: str):
-    if dbName == "general":
-        return basePath + "/database/generalDB.json"
-    elif dbName == "languages":
-        return basePath + "/database/languagesDB.json"
-    elif dbName == "registered":
-        return basePath + "/database/registeredUsersDB.json"
-    elif dbName == "words":
-        return basePath + "/database/wordsDB.json"
-    else:
-        return basePath + "/database/policiesDB.json"
 
 
 #-returns already generated 
@@ -40,20 +25,20 @@ def generate_uuid():
     add_uuid(id)
     return id
 
-def getNumberOfAddedWords():
-    dbFile = open(getDBPath("user"), "r")
-    dbData = json.load(dbFile)
-    dbFile.close()
+#-returns path of required DB file
+def getDBPath(dbName: str):
+    if dbName == "general":
+        return basePath + "/database/generalDB.json"
+    elif dbName == "languages":
+        return basePath + "/database/languagesDB.json"
+    elif dbName == "registered":
+        return basePath + "/database/registeredUsersDB.json"
+    elif dbName == "words":
+        return basePath + "/database/wordsDB.json"
+    else:
+        return basePath + "/database/policiesDB.json"
 
-    return dbData['addedWords']
-
-def getNumberOfRegisteredWords():
-    dbFile = open(getDBPath("words"), "r")
-    dbData = json.load(dbFile)
-    dbFile.close()
-        
-    return len(dbData['words'])
-
+#-returns data of reuired DB as dict
 def getDBData(dbName):
     dbFile = open(getDBPath(dbName), "r")
     dbData = json.load(dbFile)
@@ -61,20 +46,36 @@ def getDBData(dbName):
 
     return dbData
 
+#-overwrites DB data
 def saveDBData(dbName, dictData):
     dbFile = open(getDBPath(dbName), "w")
     dbFile.write(json.dumps(dictData, indent=4, sort_keys=True))
     dbFile.close()
 
+#-returns number of added words (user)
+def getNumberOfAddedWords():
+    dbFile = open(getDBPath("user"), "r")
+    dbData = json.load(dbFile)
+    dbFile.close()
+
+    return dbData['addedWords']
+
+#-returns Number of all words from words DB
+def getNumberOfRegisteredWords():
+    dbFile = open(getDBPath("words"), "r")
+    dbData = json.load(dbFile)
+    dbFile.close()
+        
+    return len(dbData['words'])
+
+#-checks if the given dict contains the given key value pair
 def checkIfPairInDict(key, value, dictionary):
     if key in dictionary and value == dictionary[key]:
         return True
     else:
         return False
 
-def killExec(state):
-    state = False
-
+#-initializes the language and general DB if languages added manually
 def initAddedLanguagesDBState():
     languages = getDBData("languages").keys()
     generalDBData = getDBData("general")
@@ -88,6 +89,7 @@ def initAddedLanguagesDBState():
                 translationDict.update(temp)
     saveDBData("general", generalDBData)
 
+#-initializes the language and general DB of existent languages and translations
 def initExistentLanguagesDBState():
     languages = getDBData("languages").keys()
     generalDBData = getDBData("general")
@@ -100,6 +102,7 @@ def initExistentLanguagesDBState():
                 translationDict.update(temp)
     saveDBData("general", generalDBData)
 
+#-calculates the translation state of every word from general DB
 def calculateTranslationState():
     generalDBData = getDBData("general")
     for words, data in generalDBData.items():
@@ -119,6 +122,7 @@ def calculateTranslationState():
         
     saveDBData("general", generalDBData)
 
+#-checks if user ist registered
 def isRegistered(self, username, password):
     dbData = getDBData("registered")
     translators = dbData["translators"]
