@@ -24,6 +24,8 @@ operator = login.loginMaskOperator()['operator']
 while(loopState == True):
     if operator == "translator":
         translator.operate()
+    elif operator == "admin":
+        admin.operate()
     else:
         user.operate()
 
