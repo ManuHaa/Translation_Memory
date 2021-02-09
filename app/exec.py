@@ -21,11 +21,9 @@ loopState = True
 authenticatedPerson = None
 operator = login.loginMaskOperator()['operator']
 
-
 while(loopState == True):
     if operator == "translator":
         translator.operate()
     else:
         user.operate()
 
-        

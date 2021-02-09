@@ -8,7 +8,6 @@ from translator import Translator
 translator = Translator()
 
 class TranslatorOperator:
-    
     def operate(self):
         operation = input("Was möchten Sie tun?(1/2/3/4/5/6)\n 1. Nach einem Wort suchen\n 2. Anzahl angelegter Wörter anzeigen\n 3. Alle registrierten Wörter anzeigen lassen\n 4. Unkomplette Übersetzungen auflisten lassen\n 5. Anzahl eigener Übersetzungen anzeigen lassen\n 6. Applikation schließen \n Eingabe: ")
         if operation.isdigit():
@@ -37,8 +36,8 @@ class TranslatorOperator:
                 if state == "y":
                     word = input("Bitte geben Sie das zu bearbeitende Wort ein: ")
                     language = input("In welcher Sprache möchten Sie die Übersetzung einpflegen? ")
-                    print(translator)
-                    if translator.isAuthorized(translator, language):
+                    currentUser = input("Bitte geben Sie erneut Ihren Username ein: ")
+                    if translator.isAuthorized(currentUser, language):
                         translation = input("Bitte geben Sie die Übersetzung an: ")
                         translator.addTranslation(word, language, translation)
                         print("Ihre Übersetzung wurde erfolgreich eingepflegt.")

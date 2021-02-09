@@ -3,7 +3,7 @@ import sys
 root = Path(__file__).parent.parent
 utilsPath = str(root) + '/folder1'
 sys.path.insert(1, utilsPath)
-from utils import initAddedLanguagesDBState, initExistentLanguagesDBState, calculateTranslationState, getDBData, isRegistered, saveDBData
+from utils import initAddedLanguagesDBState, initExistentLanguagesDBState, calculateTranslationState, getDBData, isRegistered, saveDBData, initExistentLanguagesDBState
 from obj.user import User
 
 
@@ -35,7 +35,9 @@ class Translator(User):
                 for l,t  in translations.items():
                     if l == language:
                         translations.update(translationDict)
+        initExistentLanguagesDBState()
         saveDBData("general", dbData)
+        calculateTranslationState()
 
                         
                 
