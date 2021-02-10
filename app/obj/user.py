@@ -1,7 +1,7 @@
 from utils import getDBData, generate_uuid, saveDBData, initAddedLanguagesDBState, initExistentLanguagesDBState
 from pattern.singleton import Singleton
 from pattern.null_object import Null
-from utils import Colors as color
+from obj.colors import Colors as color
 
 class User(metaclass=Singleton):
 

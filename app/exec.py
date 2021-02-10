@@ -1,4 +1,4 @@
-from login.login import LoginMask
+from operators.loginOperator import LoginMask
 from operators.userOperator import UserOperator
 from operators.adminOperator import AdminOperator
 from operators.translatorOperator import TranslatorOperator

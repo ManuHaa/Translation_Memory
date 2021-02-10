@@ -1,4 +1,4 @@
-from login.authentication import Atuhtenticator
+from obj.authentication import Atuhtenticator
 from operators.userOperator import UserOperator
 #from utils import Colors as color
 from obj.colors import Colors as color
