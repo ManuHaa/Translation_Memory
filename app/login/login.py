@@ -1,6 +1,7 @@
 from login.authentication import Atuhtenticator
 from operators.userOperator import UserOperator
-from utils import Colors as color
+#from utils import Colors as color
+from obj.colors import Colors as color
 import sys
 
 auth = Atuhtenticator()
