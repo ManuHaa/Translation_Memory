@@ -51,7 +51,7 @@ class Translator(User):
         util.saveDBData("words", wordsDBData)
 
     def showNumberOfTranslatedWords(self, translator: str):
-        print(color.green + "Anzahl hinzugefügter Wörter: " + color.end  + color.underline + str(Translator.getNumberOfTranslatedWords(self, translator)) + color.end)
+        print(color.green + "Anzahl übersertzter Wörter: " + color.end  + color.underline + str(Translator.getNumberOfTranslatedWords(self, translator)) + color.end)
 
 
                         
