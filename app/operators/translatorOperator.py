@@ -18,6 +18,7 @@ class TranslatorOperator(metaclass=Singleton):
                         state = input(color.yellow + "Das eingegebene Wort existiert noch nicht. Wollen Sie es anlegen?(y/n)" + color.end)
                         if state == 'y':
                             translator.addWord(word)
+                            #translator.updateAddedWords()
                             print(color.green + "Das Wort wurde erfolgreich hinzugefügt!" + color.end)
                 else:
                     print(color.red + "Ihre EIngabe war leider kein valides Wort." + color.end)

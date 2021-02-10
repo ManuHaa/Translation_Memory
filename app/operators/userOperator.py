@@ -23,7 +23,7 @@ class UserOperator(metaclass=Singleton):
                         state = input(color.yellow + "Das eingegebene Wort existiert noch nicht. Wollen Sie es anlegen damit ein Übersetzer es übersetzen kann?(y/n)\n" + color.end  +  "Eingabe: ")
                         if state == 'y':
                             user.addWord(word)
-                            user.updateUserAddedWords()
+                            user.updateAddedWords("user")
                             print(color.green + "Das Wort wurde erfolgreich hinzugefügt!"  + color.end)
                 else:
                     print(color.red + "Ihre Eingabe war leider kein valides Wort." + color.end)
