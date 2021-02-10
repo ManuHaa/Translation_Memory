@@ -43,7 +43,7 @@ class Translator(User):
                         translations.update(translationDict)
         util.initExistentLanguagesDBState()
         util.saveDBData("general", dbData)
-        util.calculateTranslationState()
+        util.calculateTranslationState(word)
 
     def getNumberOfTranslatedWords(self, translator: str):
         dbData = util.getDBData("words")

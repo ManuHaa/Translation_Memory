@@ -98,11 +98,12 @@ class Utils:
         Utils.saveDBData("general", generalDBData)
 
     #-calculates the translation state of every word from general DB
-    def calculateTranslationState():
+    def calculateTranslationState(word):
         generalDBData = Utils.getDBData("general")
+        wordsArr = []
+
         for words, data in generalDBData.items():
             translationDict = data["translations"]
-            translationState = data["translationState"]
             arr = []
             for key, value in translationDict.items():
                 arr.append(value)
@@ -111,10 +112,10 @@ class Utils:
             for element in arr:
                 if element == "Keine":
                     noneObject += 1
-            
-            data['translationState'] = int(100 - round((noneObject/numberLanguages)*100, 0))
-            print(data['translationState'])
-            
+            wordsArr.append(words)
+        for w in wordsArr:
+            if word == w:
+                generalDBData[word]['translationState'] = int(100 - round((noneObject/numberLanguages)*100, 0))
         Utils.saveDBData("general", generalDBData)
 
     #-checks if the given dict contains the given key value pair

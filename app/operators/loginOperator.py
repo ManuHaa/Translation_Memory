@@ -35,7 +35,7 @@ class LoginMask:
                         sys.exit()
             else:
                 operator['operator'] = "user"
-                print("Ihre Eingabe war nicht valide, Sie werden nun als User eingeloggt.\n" + color.green + "Wilkommen User!" + color.end)
+                print(color.bold + "Ihre Eingabe war nicht valide, Sie werden nun als User eingeloggt.\n" + color.end + color.green + "Wilkommen User!" + color.end)
                 return operator
         elif state == 'n':
             print(color.green + "Wilkommen User!" + color.end)
