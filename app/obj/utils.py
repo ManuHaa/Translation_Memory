@@ -117,26 +117,9 @@ class Utils:
             
         Utils.saveDBData("general", generalDBData)
 
-    #-checks if user ist registered
-    def isRegistered(self, username: str, password: str):
-        dbData = Utils.getDBData("registered")
-        translators = Utils.dbData["translators"]
-        admins = Utils.dbData["admins"]
-        key, val = username, password
-
-        if Utils.checkIfPairInDict(key, val, admins) or Utils.checkIfPairInDict(key, val, translators):
-            print("yes")
-
-
     #-checks if the given dict contains the given key value pair
     def checkIfPairInDict(key: str, value: str, dictionary: dict):
         if key in dictionary and value == dictionary[key]:
             return True
         else:
             return False
-
-    
-        
-                
-
-        

@@ -34,19 +34,22 @@ class TranslatorOperator(metaclass=Singleton):
                 state = input(color.yellow + "Wollen Sie zu einem dieser Wörter eine Übersetzung einpflegen?(y/n)\n" + color.end +"Eingabe: ")
                 if state == 'y':
                     word = input("Bitte geben Sie das zu bearbeitende Wort ein: ")
-                    language = input("In welcher Sprache möchten Sie die Übersetzung einpflegen? ")
-                    if word.isalpha() and len(word.split()) == 1 and language.isalpha() and len(language.split()) == 1:
-                        language = language.title()
-                        currentUser = input("Bitte geben Sie erneut Ihren Username ein: ")
-                        if translator.isAuthorized(currentUser, language):
-                            translation = input(color.yellow + "Bitte geben Sie die Übersetzung an: " + color.end)
-                            translator.addTranslation(word, language, translation)
-                            translator.updateTranslatorTranslatedWords(currentUser)
-                            print(color.green + "Ihre Übersetzung wurde erfolgreich eingepflegt." + color.end)
+                    if translator.checkIfWortExists(word):
+                        language = input("In welcher Sprache möchten Sie die Übersetzung einpflegen? ")
+                        if word.isalpha() and len(word.split()) == 1 and language.isalpha() and len(language.split()) == 1:
+                            language = language.title()
+                            currentUser = input("Bitte geben Sie erneut Ihren Username ein: ")
+                            if translator.isAuthorized(currentUser, language):
+                                translation = input(color.yellow + "Bitte geben Sie die Übersetzung an: " + color.end)
+                                translator.addTranslation(word, language, translation)
+                                translator.updateTranslatorTranslatedWords(currentUser)
+                                print(color.green + "Ihre Übersetzung wurde erfolgreich eingepflegt." + color.end)
+                            else:
+                                print(color.red + "Sie sind leider nicht authorisiert für diese Sprache eine Übersetzung einzupflegen. Bitte sprechen Sie mit einem Admin." + color.end)
                         else:
-                            print(color.red + "Sie sind leider nicht authorisiert für diese Sprache eine Übersetzung einzupflegen. Bitte sprechen Sie mit einem Admin." + color.end)
+                            print(color.red + "Ihre Eingaben für Wort und Sprache waren nicht valide." + color.end)
                     else:
-                        print(color.red + "Ihre Eingaben für Wort und Sprache waren nicht valide." + color.end)
+                        print(color.red + "Das von Ihnen eingegebene Wort existiert nicht in der Datenbank" +  color.end)
                 elif state == 'n':
                     pass
                 else:

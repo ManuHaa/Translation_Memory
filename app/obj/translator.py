@@ -5,6 +5,16 @@ from obj.colors import Colors as color
 
 class Translator(User):
 
+    def checkIfWortExists(self, word):
+        dbData = util.getDBData("general")
+        words = []
+        for key in dbData.keys():
+            words.append(key)
+        if word in words:
+            return True
+        else:
+            return False
+
     def getUncompleteTranslatedWords(self):
         dbData = util.getDBData("general")
         for word, data in dbData.items():
