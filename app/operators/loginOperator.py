@@ -8,13 +8,15 @@ auth = Atuhtenticator()
 user = UserOperator()
 
 class LoginMask:
-
+    currentUser = { "username": None, "password": None}
     def loginMaskOperator(self):
         operator = { "operator" : None}
         state = input(color.blue + "TranslationMemory\n" + color.end + "Wilkommen!\nWollen Sie sich anmelden oder als Benutzer fortfahren? (y/n) \n" + color.yellow + "Eingabe: " +  color.end)
         if state == 'y':
             username = input("Benutzername eingeben: ")
             password = input("Passwort eingeben: ")
+            LoginMask.currentUser['username'] = username
+            LoginMask.currentUser['password'] = password
             if username.isalnum() and password.isalnum():
                 if auth.isTranslator(username, password):
                     print(color.green + "Wilkommen Translator!" + color.end)

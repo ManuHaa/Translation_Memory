@@ -2,7 +2,9 @@ import sys
 from translator import Translator
 from pattern.singleton import Singleton
 from obj.colors import Colors as color
+from operators.loginOperator import LoginMask
 
+login = LoginMask()
 translator = Translator()
 
 class TranslatorOperator(metaclass=Singleton):
@@ -18,7 +20,7 @@ class TranslatorOperator(metaclass=Singleton):
                         state = input(color.yellow + "Das eingegebene Wort existiert noch nicht. Wollen Sie es anlegen?(y/n)" + color.end)
                         if state == 'y':
                             translator.addWord(word)
-                            #translator.updateAddedWords()
+                            translator.updateAddedWords(login.currentUser['username'])
                             print(color.green + "Das Wort wurde erfolgreich hinzugefügt!" + color.end)
                 else:
                     print(color.red + "Ihre EIngabe war leider kein valides Wort." + color.end)
