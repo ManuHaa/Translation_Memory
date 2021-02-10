@@ -42,7 +42,7 @@ class LoginMask:
             operator['operator'] = "user"
             return operator
         else:
-            print(color.blue + "Ups, Ihre Eingabe war fehlerhaft." + color.end)
+            print(color.blue + "Ups, Ihre Eingabe war fehlerhaft. Applikation wird automatisch beendet." + color.end)
             sys.exit()
 
 

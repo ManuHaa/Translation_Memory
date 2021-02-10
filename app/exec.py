@@ -17,6 +17,8 @@ while(loopState == True):
         translator.operate()
     elif operator == "admin":
         admin.operate()
-    else:
+    elif operator == "user":
         user.operate()
+    else:
+        pass
 
