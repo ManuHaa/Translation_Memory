@@ -25,11 +25,10 @@ class TranslatorOperator(metaclass=Singleton):
                 else:
                     print(color.red + "Ihre EIngabe war leider kein valides Wort." + color.end)
             elif operation == '2':
-                username = input("Bitte geben sie Ihren Username an: ")
-                if translator.getNumberOfAddedWords(username) is None:
+                if translator.getNumberOfAddedWords(login.currentUser['username']) is None:
                     print(color.red + "Sie haben bisher noch keine Wörter angelegt oder den Username falsch eingetragen." + color.end)
                 else:
-                    translator.showNumberOfAddedWords(username)
+                    translator.showNumberOfAddedWords(login.currentUser['username'])
             elif operation == '3':
                 translator.showNumberOfRegisteredWords()
             elif operation == '4':
@@ -41,11 +40,10 @@ class TranslatorOperator(metaclass=Singleton):
                         language = input("In welcher Sprache möchten Sie die Übersetzung einpflegen? ")
                         if word.isalpha() and len(word.split()) == 1 and language.isalpha() and len(language.split()) == 1:
                             language = language.title()
-                            currentUser = input("Bitte geben Sie erneut Ihren Username ein: ")
-                            if translator.isAuthorized(currentUser, language):
+                            if translator.isAuthorized(login.currentUser['username'], language):
                                 translation = input(color.yellow + "Bitte geben Sie die Übersetzung an: " + color.end)
                                 translator.addTranslation(word, language, translation)
-                                translator.updateTranslatorTranslatedWords(currentUser)
+                                translator.updateTranslatorTranslatedWords(login.currentUser['username'])
                                 print(color.green + "Ihre Übersetzung wurde erfolgreich eingepflegt." + color.end)
                             else:
                                 print(color.red + "Sie sind leider nicht authorisiert für diese Sprache eine Übersetzung einzupflegen. Bitte sprechen Sie mit einem Admin." + color.end)
@@ -58,11 +56,10 @@ class TranslatorOperator(metaclass=Singleton):
                 else:
                     print(color.red + "Keine valide Eingabe" + color.end)
             elif operation == '5':
-                username = input("Bitte geben Sie ihren Username ein: ")
-                if translator.getNumberOfTranslatedWords(username) is None:
+                if translator.getNumberOfTranslatedWords(login.currentUser['username']) is None:
                     print(color.red + "Sie haben Ihren Username falsch eingegeben oder der Übersetzer existiert nicht." + color.end)
                 else:
-                    translator.showNumberOfTranslatedWords(username)                
+                    translator.showNumberOfTranslatedWords(login.currentUser['username'])                
             else:
                 print(color.blue + "Auf Wiedersehen!" + color.end)
                 sys.exit()
