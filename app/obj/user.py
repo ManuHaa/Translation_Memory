@@ -1,7 +1,7 @@
 from utils import getDBData, generate_uuid, saveDBData, initAddedLanguagesDBState, initExistentLanguagesDBState
 from pattern.singleton import Singleton
 from pattern.null_object import Null
-from utils import Colors as c
+from utils import Colors as color
 
 class User(metaclass=Singleton):
 
@@ -72,15 +72,15 @@ class User(metaclass=Singleton):
                     return Null()
 
     def showNumberOfAddedWords(self, operator: str):
-        print(c.green + "Anzahl hinzugefügter Wörter: " + c.end + c.underline + str(User.getNumberOfAddedWords(self, operator)) + c.end)
+        print(color.green + "Anzahl hinzugefügter Wörter: " + color.end + color.underline + str(User.getNumberOfAddedWords(self, operator)) + color.end)
 
     def showNumberOfRegisteredWords(self):
-        print(c.green + "Anzahl registrierter Wörter: " + c.end + c.underline + str(User.getNumberOfRegisteredWords(self))+ c.end + c.green + "\nDavon ist/sind " + c.end + c.underline + str(User.getNumberOfCompleteTranslatedWords(self)) + c.end + c.green + " Wort/Wörter komplett übersetzt." + c.end)
+        print(color.green + "Anzahl registrierter Wörter: " + color.end + color.underline + str(User.getNumberOfRegisteredWords(self))+ color.end + color.green + "\nDavon ist/sind " + color.end + color.underline + str(User.getNumberOfCompleteTranslatedWords(self)) + color.end + color.green + " Wort/Wörter komplett übersetzt." + color.end)
 
     def showTranslations(self, word: str):
         translations = User.getTranslationsOfWord(self, word)
         
-        print(c.green + "Übersetzungen von dem Wort " + c.end + c.underline + word + c.end +" : ")
+        print(color.green + "Übersetzungen von dem Wort " + color.end + color.underline + word + color.end +" : ")
         for tupel in translations:
             language = tupel[0]
             translation = tupel[1]

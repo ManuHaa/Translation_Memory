@@ -1,5 +1,6 @@
 from utils import initAddedLanguagesDBState, initExistentLanguagesDBState, calculateTranslationState, getDBData, isRegistered, saveDBData, initExistentLanguagesDBState
 from obj.user import User
+from obj.colors import Colors as color
 
 
 class Translator(User):
@@ -50,7 +51,7 @@ class Translator(User):
         saveDBData("words", wordsDBData)
 
     def showNumberOfTranslatedWords(self, translator: str):
-        print("Anzahl hinzugefügter Wörter: " + str(Translator.getNumberOfTranslatedWords(self, translator)))
+        print(color.green + "Anzahl hinzugefügter Wörter: " + color.end  + color.underline + str(Translator.getNumberOfTranslatedWords(self, translator)) + color.end)
 
 
                         
