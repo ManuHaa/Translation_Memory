@@ -113,6 +113,13 @@ class Utils:
         generalDBData[word]['translationState'] = int((numberTranslations/numberLanguages) * 100)
         Utils.saveDBData("general", generalDBData)
 
+    def initTranslationStates():
+        generalDBData = Utils.getDBData("general")
+        for word in generalDBData:
+            Utils.calculateTranslationState(word)
+        
+            
+
     #-checks if the given dict contains the given key value pair
     def checkIfPairInDict(key: str, value: str, dictionary: dict):
         if key in dictionary and value == dictionary[key]:
