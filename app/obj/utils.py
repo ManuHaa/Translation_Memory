@@ -100,22 +100,17 @@ class Utils:
     #-calculates the translation state of every word from general DB
     def calculateTranslationState(word):
         generalDBData = Utils.getDBData("general")
-        wordsArr = []
+        translationState = generalDBData[word]['translationState']
+        translations = generalDBData[word]['translations']
 
-        for words, data in generalDBData.items():
-            translationDict = data["translations"]
-            arr = []
-            for key, value in translationDict.items():
-                arr.append(value)
-                numberLanguages = len(key)
-            noneObject = 0
-            for element in arr:
-                if element == "Keine":
-                    noneObject += 1
-            wordsArr.append(words)
-        for w in wordsArr:
-            if word == w:
-                generalDBData[word]['translationState'] = int(100 - round((noneObject/numberLanguages)*100, 0))
+        numberLanguages = len(translations.keys())
+        noneObjects = []
+        for value in translations.values():
+            if value == "Keine":
+                noneObjects.append(value)
+        numberNoneObjects = len(noneObjects)
+        numberTranslations = numberLanguages - numberNoneObjects
+        generalDBData[word]['translationState'] = int((numberTranslations/numberLanguages) * 100)
         Utils.saveDBData("general", generalDBData)
 
     #-checks if the given dict contains the given key value pair
