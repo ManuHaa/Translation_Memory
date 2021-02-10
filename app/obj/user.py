@@ -1,4 +1,4 @@
-from utils import getDBData, generate_uuid, saveDBData, initAddedLanguagesDBState, initExistentLanguagesDBState
+from obj.utils import Utils as util
 from pattern.singleton import Singleton
 from pattern.null_object import Null
 from obj.colors import Colors as color
@@ -6,10 +6,10 @@ from obj.colors import Colors as color
 class User(metaclass=Singleton):
 
     def addWord(self, word: str):
-        dbData = getDBData("general")
+        dbData = util.getDBData("general")
         wordDict = {
             word: {
-                "id": generate_uuid(),
+                "id": util.generate_uuid(),
                 "translationState": 0,
                 "translations": {
 
@@ -17,22 +17,22 @@ class User(metaclass=Singleton):
             }
         }
         dbData.update(wordDict)
-        saveDBData("general", dbData)
-        initExistentLanguagesDBState()
+        util.saveDBData("general", dbData)
+        util.initExistentLanguagesDBState()
 
     def updateUserAddedWords(self):
-        wordsDBData = getDBData("words")
+        wordsDBData = util.getDBData("words")
         addedWordsDict = wordsDBData['addedWords']
         addedWordsDict['user'] = addedWordsDict['user']+1
         
-        saveDBData("words", wordsDBData)
+        util.saveDBData("words", wordsDBData)
 
     def getNumberOfRegisteredWords(self):
-        dbData = getDBData("general")
+        dbData = util.getDBData("general")
         return len(dbData)
             
     def getNumberOfCompleteTranslatedWords(self):
-        dbData = getDBData("general")
+        dbData = util.getDBData("general")
         arr = []
         for word, data in dbData.items():
             translationState = data['translationState']
@@ -41,7 +41,7 @@ class User(metaclass=Singleton):
         return len(arr)
 
     def wordExists(self, word: str):
-        dbData = getDBData("general")
+        dbData = util.getDBData("general")
         words = dbData.keys()
         if word in words:
             return True
@@ -49,7 +49,7 @@ class User(metaclass=Singleton):
             return False
 
     def getTranslationsOfWord(self, word: str):
-        dbData = getDBData("general")
+        dbData = util.getDBData("general")
         translations = []
         if User.wordExists(self, word):
             for k,v in dbData.items():
@@ -62,7 +62,7 @@ class User(metaclass=Singleton):
         return translations
 
     def getNumberOfAddedWords(self, operator: str):
-        dbData = getDBData("words")
+        dbData = util.getDBData("words")
         for k,v in dbData.items():
             if k == "addedWords":
                 for i,j in v.items():

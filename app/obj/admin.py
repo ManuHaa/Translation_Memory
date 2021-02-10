@@ -1,11 +1,12 @@
 from pattern.singleton import Singleton
-from utils import getDBData, generate_uuid, saveDBData, initExistentLanguagesDBState
+from obj.utils import Utils as util
+from obj.colors import Colors as color
 
 
 class Admin(metaclass=Singleton):
 
     def wordExists(self, word: str):
-        dbData = getDBData("general")
+        dbData = util.getDBData("general")
         words = dbData.keys()
         if word in words:
             return True
@@ -13,7 +14,7 @@ class Admin(metaclass=Singleton):
             return False
 
     def getTranslationsOfWord(self, word: str):
-        dbData = getDBData("general")
+        dbData = util.getDBData("general")
         translations = []
         if Admin.wordExists(self, word):
             for k,v in dbData.items():
@@ -26,43 +27,43 @@ class Admin(metaclass=Singleton):
         return translations
     
     def addLanguage(self, language: str):
-        dbData = getDBData("languages")
-        newLanguageDict = { language: generate_uuid()}
+        dbData = util.getDBData("languages")
+        newLanguageDict = { language: util.generate_uuid()}
         if language in dbData.keys():
             print("Diese Sprache wurde bereits angelegt.")
         else:
             dbData.update(newLanguageDict)
-            saveDBData("languages", dbData)
-            initExistentLanguagesDBState()
+            util.saveDBData("languages", dbData)
+            util.initExistentLanguagesDBState()
 
     def assignLanguage(self, translator: str, language: str):
-        registeredUsersDBData = getDBData("registered")
-        languagesDBData = getDBData("languages")
-        policiesDBData = getDBData("policies")
+        registeredUsersDBData = util.getDBData("registered")
+        languagesDBData = util.getDBData("languages")
+        policiesDBData = util.getDBData("policies")
 
         if translator in registeredUsersDBData['translators'] and language in languagesDBData.keys():
             for k,v in policiesDBData.items():
                 if k == translator: 
                     authLanguages = v["authLanguages"]
                     if language in authLanguages:
-                        print("Dieser Übersetzer darf bereits die eingegebene Sprache verwenden.")
+                        print(color.yellow + "Dieser Übersetzer darf bereits die eingegebene Sprache verwenden." + color.end)
                     else:
                         authLanguages.append(language)
-                        saveDBData("policies", policiesDBData)
-                        print("Sprache wurde erfolgreich freigegeben!")
+                        util.saveDBData("policies", policiesDBData)
+                        print(color.green + "Sprache wurde erfolgreich freigegeben!" + color.end)
         elif translator not in registeredUsersDBData['translators']:
-            print("Der genannte User ist nicht registriert.")
+            print(color.red + "Der genannte User ist nicht registriert." + color.end)
         elif language not in languagesDBData.keys():
-            print("Die eingegebene Sprache ist noch nicht registriert.")
+            print(color.red + "Die eingegebene Sprache ist noch nicht registriert." + color.end)
         else:
-            print("AdminError: Please contact the developer")
+            print(color.red + "AdminError: Please contact the developer" + color.end)
 
     def showTranslations(self, word: str):
         translations = Admin.getTranslationsOfWord(self, word)
         if translations is None:
-            print("Für dieses Wort wurden bisher keine Übersetzungen eingepflegt.")
+            print(color.yellow + "Für dieses Wort wurden bisher keine Übersetzungen eingepflegt." + color.end)
         else:
-            print("Übersetzungen von dem Wort " + word + " : ")
+            print(color.green + "Übersetzungen von dem Wort " + color.end + color.underline + word + color.end + color.green + " : " + color.end)
             for tupel in translations:
                 language = tupel[0]
                 translation = tupel[1]
