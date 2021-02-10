@@ -1,22 +1,18 @@
-from pathlib import Path
-import sys
-root = Path(__file__).parent.parent
-utilsPath = str(root) + '/folder1'
-sys.path.insert(1, utilsPath)
-from utils import initAddedLanguagesDBState, initExistentLanguagesDBState, calculateTranslationState, getDBData, isRegistered, saveDBData, initExistentLanguagesDBState
+from obj.utils import Utils as util
 from obj.user import User
+from obj.colors import Colors as color
 
 
 class Translator(User):
 
     def getUncompleteTranslatedWords(self):
-        dbData = getDBData("general")
+        dbData = util.getDBData("general")
         for word, data in dbData.items():
             if data['translationState'] < 100:
                 print(str(word) + " " +str(data['translationState']) + "%")
 
-    def isAuthorized(self, translatorName, language):
-        dbData = getDBData("policies")
+    def isAuthorized(self, translatorName: str, language: str):
+        dbData = util.getDBData("policies")
         
         try:
             authLanguages = dbData[translatorName]['authLanguages']
@@ -26,8 +22,8 @@ class Translator(User):
             print("Der User ist nicht hinterlegt.")
             return False
 
-    def addTranslation(self, word, language, translation):
-        dbData = getDBData("general")
+    def addTranslation(self, word: str, language: str, translation: str):
+        dbData = util.getDBData("general")
         translationDict = { language: translation}
         for k in dbData:
             if word == k:
@@ -35,27 +31,27 @@ class Translator(User):
                 for l,t  in translations.items():
                     if l == language:
                         translations.update(translationDict)
-        initExistentLanguagesDBState()
-        saveDBData("general", dbData)
-        calculateTranslationState()
+        util.initExistentLanguagesDBState()
+        util.saveDBData("general", dbData)
+        util.calculateTranslationState()
 
-    def getNumberOfTranslatedWords(self, translator):
-        dbData = getDBData("words")
+    def getNumberOfTranslatedWords(self, translator: str):
+        dbData = util.getDBData("words")
         for k,v in dbData.items():
             if k == "translatedWords":
                 for i,j in v.items():
                     if i == translator:
                         return j
 
-    def updateTranslatorTranslatedWords(self, translator):
-        wordsDBData = getDBData("words")
+    def updateTranslatorTranslatedWords(self, translator: str):
+        wordsDBData = util.getDBData("words")
         addedWordsDict = wordsDBData['translatedWords']
         addedWordsDict[translator] = addedWordsDict[translator]+1
         
-        saveDBData("words", wordsDBData)
+        util.saveDBData("words", wordsDBData)
 
-    def showNumberOfTranslatedWords(self, translator):
-        print("Anzahl hinzugefügter Wörter: " + str(Translator.getNumberOfTranslatedWords(self, translator)))
+    def showNumberOfTranslatedWords(self, translator: str):
+        print(color.green + "Anzahl hinzugefügter Wörter: " + color.end  + color.underline + str(Translator.getNumberOfTranslatedWords(self, translator)) + color.end)
 
 
                         

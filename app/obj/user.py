@@ -1,21 +1,15 @@
-from pathlib import Path
-import sys
-root = Path(__file__).parent.parent
-utilsPath = str(root) + '/folder1'
-sys.path.insert(1, utilsPath)
-from utils import getDBData, generate_uuid, saveDBData, initAddedLanguagesDBState, initExistentLanguagesDBState
+from obj.utils import Utils as util
+from pattern.singleton import Singleton
+from pattern.null_object import Null
+from obj.colors import Colors as color
 
+class User(metaclass=Singleton):
 
-class User:
-    
-    #def __init__(self, addedWords):
-        #self._addedWords = addedWords
-
-    def addWord(self, word):
-        dbData = getDBData("general")
+    def addWord(self, word: str):
+        dbData = util.getDBData("general")
         wordDict = {
             word: {
-                "id": generate_uuid(),
+                "id": util.generate_uuid(),
                 "translationState": 0,
                 "translations": {
 
@@ -23,19 +17,22 @@ class User:
             }
         }
         dbData.update(wordDict)
-        saveDBData("general", dbData)
-        initExistentLanguagesDBState()
+        util.saveDBData("general", dbData)
+        util.initExistentLanguagesDBState()
+
+    def updateUserAddedWords(self):
+        wordsDBData = util.getDBData("words")
+        addedWordsDict = wordsDBData['addedWords']
+        addedWordsDict['user'] = addedWordsDict['user']+1
+        
+        util.saveDBData("words", wordsDBData)
 
     def getNumberOfRegisteredWords(self):
-        dbData = getDBData("general")
+        dbData = util.getDBData("general")
         return len(dbData)
-
-    def showNumberOfRegisteredWords(self):
-        print("Anzahl registrierter Wörter: " + str(User.getNumberOfRegisteredWords(self)) + "\nDavon ist/sind " + str(User.getNumberOfCompleteTranslatedWords(self)) + " Wort/Wörter komplett übersetzt.")
             
-
     def getNumberOfCompleteTranslatedWords(self):
-        dbData = getDBData("general")
+        dbData = util.getDBData("general")
         arr = []
         for word, data in dbData.items():
             translationState = data['translationState']
@@ -43,16 +40,16 @@ class User:
                 arr.append(translationState)
         return len(arr)
 
-    def wordExists(self, word):
-        dbData = getDBData("general")
+    def wordExists(self, word: str):
+        dbData = util.getDBData("general")
         words = dbData.keys()
         if word in words:
             return True
         else:
             return False
 
-    def getTranslationsOfWord(self, word):
-        dbData = getDBData("general")
+    def getTranslationsOfWord(self, word: str):
+        dbData = util.getDBData("general")
         translations = []
         if User.wordExists(self, word):
             for k,v in dbData.items():
@@ -64,44 +61,29 @@ class User:
                                 
         return translations
 
-    def showTranslations(self, word):
+    def getNumberOfAddedWords(self, operator: str):
+        dbData = util.getDBData("words")
+        for k,v in dbData.items():
+            if k == "addedWords":
+                for i,j in v.items():
+                    if i == operator:
+                        return j
+                else:
+                    return Null()
+
+    def showNumberOfAddedWords(self, operator: str):
+        print(color.green + "Anzahl hinzugefügter Wörter: " + color.end + color.underline + str(User.getNumberOfAddedWords(self, operator)) + color.end)
+
+    def showNumberOfRegisteredWords(self):
+        print(color.green + "Anzahl registrierter Wörter: " + color.end + color.underline + str(User.getNumberOfRegisteredWords(self))+ color.end + color.green + "\nDavon ist/sind " + color.end + color.underline + str(User.getNumberOfCompleteTranslatedWords(self)) + color.end + color.green + " Wort/Wörter komplett übersetzt." + color.end)
+
+    def showTranslations(self, word: str):
         translations = User.getTranslationsOfWord(self, word)
         
-        print("Übersetzungen von dem Wort " + word + " : ")
+        print(color.green + "Übersetzungen von dem Wort " + color.end + color.underline + word + color.end +" : ")
         for tupel in translations:
             language = tupel[0]
             translation = tupel[1]
             if not translation:
                 translation = "Keine"
             print(language + " - " + translation)
-        
-            
-
-    def say(self):
-        print("I'm from another world!")
-
-    def getNumberOfAddedWords(self, operator):
-        dbData = getDBData("words")
-        for k,v in dbData.items():
-            if k == "addedWords":
-                for i,j in v.items():
-                    if i == operator:
-                        return j
-
-    def showNumberOfAddedWords(self, operator):
-        print("Anzahl hinzugefügter Wörter: " + str(User.getNumberOfAddedWords(self, operator)))
-
-    def updateUserAddedWords(self):
-        wordsDBData = getDBData("words")
-        addedWordsDict = wordsDBData['addedWords']
-        addedWordsDict['user'] = addedWordsDict['user']+1
-        
-        saveDBData("words", wordsDBData)
-
-
-
-
-        
-
-
-                
