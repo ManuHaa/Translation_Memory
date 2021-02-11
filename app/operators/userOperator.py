@@ -12,7 +12,7 @@ user = User()
 class UserOperator(metaclass=Singleton):
 
     def operate(self):
-        operation = input(color.yellow + "Was möchten Sie tun?(1/2/3/4)\n " + color.end + "1. Nach einem Wort suchen\n 2. Anzahl angelegter Wörter anzeigen\n 3. Alle registrierten Wörter anzeigen lassen\n 4. Applikation schließen \n" + color.yellow + "Eingabe: " + color.end)
+        operation = input(color.yellow + "Was möchten Sie tun?(1/2/3/4)\n " + color.end + "1. Nach einem Wort suchen\n 2. Anzahl angelegter Wörter anzeigen\n 3. Anzahl aller registrierter Wörter anzeigen mit Anzahl komplett übersetzer Wörter\n 4. Applikation schließen \n" + color.yellow + "Eingabe: " + color.end)
         if operation.isdigit():
             if operation == '1':
                 word = input("Bitte geben Sie ein Wort ein: ")
@@ -23,7 +23,7 @@ class UserOperator(metaclass=Singleton):
                         state = input(color.yellow + "Das eingegebene Wort existiert noch nicht. Wollen Sie es anlegen damit ein Übersetzer es übersetzen kann?(y/n)\n" + color.end  +  "Eingabe: ")
                         if state == 'y':
                             user.addWord(word)
-                            user.updateUserAddedWords()
+                            user.updateAddedWords("user")
                             print(color.green + "Das Wort wurde erfolgreich hinzugefügt!"  + color.end)
                 else:
                     print(color.red + "Ihre Eingabe war leider kein valides Wort." + color.end)

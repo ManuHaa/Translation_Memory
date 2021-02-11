@@ -31,6 +31,7 @@ class AdminOperator(metaclass=Singleton):
                 translator = input("Bitte nennen Sie einen Übersetzer per Username: ")
                 language = input("Bitte wählen Sie eine registrierte Sprache aus: ")
                 if translator.isalnum() and language.isalpha() and len(language.split()) <= 1:
+                    language = language.title()
                     admin.assignLanguage(translator, language)
                 else:
                     print(color.red + "Sprache kann dem Übersetzer nicht hinzugefügt werden." + color.end)

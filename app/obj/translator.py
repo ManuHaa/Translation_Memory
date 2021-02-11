@@ -5,6 +5,16 @@ from obj.colors import Colors as color
 
 class Translator(User):
 
+    def checkIfWortExists(self, word):
+        dbData = util.getDBData("general")
+        words = []
+        for key in dbData.keys():
+            words.append(key)
+        if word in words:
+            return True
+        else:
+            return False
+
     def getUncompleteTranslatedWords(self):
         dbData = util.getDBData("general")
         for word, data in dbData.items():
@@ -33,7 +43,7 @@ class Translator(User):
                         translations.update(translationDict)
         util.initExistentLanguagesDBState()
         util.saveDBData("general", dbData)
-        util.calculateTranslationState()
+        util.calculateTranslationState(word)
 
     def getNumberOfTranslatedWords(self, translator: str):
         dbData = util.getDBData("words")
@@ -51,7 +61,7 @@ class Translator(User):
         util.saveDBData("words", wordsDBData)
 
     def showNumberOfTranslatedWords(self, translator: str):
-        print(color.green + "Anzahl hinzugefügter Wörter: " + color.end  + color.underline + str(Translator.getNumberOfTranslatedWords(self, translator)) + color.end)
+        print(color.green + "Anzahl übersertzter Wörter: " + color.end  + color.underline + str(Translator.getNumberOfTranslatedWords(self, translator)) + color.end)
 
 
                         

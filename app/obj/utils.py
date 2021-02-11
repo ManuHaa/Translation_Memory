@@ -98,35 +98,27 @@ class Utils:
         Utils.saveDBData("general", generalDBData)
 
     #-calculates the translation state of every word from general DB
-    def calculateTranslationState():
+    def calculateTranslationState(word):
         generalDBData = Utils.getDBData("general")
-        for words, data in generalDBData.items():
-            translationDict = data["translations"]
-            translationState = data["translationState"]
-            arr = []
-            for key, value in translationDict.items():
-                arr.append(value)
-                numberLanguages = len(key)
-            noneObject = 0
-            for element in arr:
-                if element == "Keine":
-                    noneObject += 1
-            
-            data['translationState'] = int(100 - round((noneObject/numberLanguages)*100, 0))
-            print(data['translationState'])
-            
+        translationState = generalDBData[word]['translationState']
+        translations = generalDBData[word]['translations']
+
+        numberLanguages = len(translations.keys())
+        noneObjects = []
+        for value in translations.values():
+            if value == "Keine":
+                noneObjects.append(value)
+        numberNoneObjects = len(noneObjects)
+        numberTranslations = numberLanguages - numberNoneObjects
+        generalDBData[word]['translationState'] = int((numberTranslations/numberLanguages) * 100)
         Utils.saveDBData("general", generalDBData)
 
-    #-checks if user ist registered
-    def isRegistered(self, username: str, password: str):
-        dbData = Utils.getDBData("registered")
-        translators = Utils.dbData["translators"]
-        admins = Utils.dbData["admins"]
-        key, val = username, password
-
-        if Utils.checkIfPairInDict(key, val, admins) or Utils.checkIfPairInDict(key, val, translators):
-            print("yes")
-
+    def initTranslationStates():
+        generalDBData = Utils.getDBData("general")
+        for word in generalDBData:
+            Utils.calculateTranslationState(word)
+        
+            
 
     #-checks if the given dict contains the given key value pair
     def checkIfPairInDict(key: str, value: str, dictionary: dict):
@@ -134,9 +126,3 @@ class Utils:
             return True
         else:
             return False
-
-    
-        
-                
-
-        

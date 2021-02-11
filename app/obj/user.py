@@ -20,10 +20,10 @@ class User(metaclass=Singleton):
         util.saveDBData("general", dbData)
         util.initExistentLanguagesDBState()
 
-    def updateUserAddedWords(self):
+    def updateAddedWords(self, operator: str):
         wordsDBData = util.getDBData("words")
         addedWordsDict = wordsDBData['addedWords']
-        addedWordsDict['user'] = addedWordsDict['user']+1
+        addedWordsDict[operator] = addedWordsDict[operator]+1
         
         util.saveDBData("words", wordsDBData)
 

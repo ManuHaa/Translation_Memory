@@ -35,6 +35,7 @@ class Admin(metaclass=Singleton):
             dbData.update(newLanguageDict)
             util.saveDBData("languages", dbData)
             util.initExistentLanguagesDBState()
+            util.initTranslationStates()
 
     def assignLanguage(self, translator: str, language: str):
         registeredUsersDBData = util.getDBData("registered")
