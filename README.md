@@ -71,9 +71,8 @@ Probieren Sie die Optionen der Benutzer aus:
 
 Viel Spaß ;)
 
-
-# ----------------------------------------------------------------------------------------  
 #
+# TranslationMemory 
 This repository contains a translation memory script tool written in python. 
 
 ## Folder Structure
