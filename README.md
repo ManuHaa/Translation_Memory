@@ -72,11 +72,75 @@ Probieren Sie die Optionen der Benutzer aus:
 Viel Spaß ;)
 
 
-
-
-
-
-# Translation_Memory
+# ----------------------------------------------------------------------------------------  
+#
 This repository contains a translation memory script tool written in python. 
 
 ## Folder Structure
+### database - data storage
+The application data is stored in following files:
+- generalDB.json: contains all registered words with additional data
+- languagesDB.json: contains all registered languages
+- policiesDB.json: contains the registered users with their entitlements
+- registeredUsersDB.json: contains all registered users with their username and password
+- wordsDB.json: contains the number of added and translated words of each user
+
+### obj - objects (intsances)
+Following objects wehre implemented for the application:
+- admin.py: admin with his functionality
+- authentication.py: contains login functionality
+- colors.py: contains color codes for the terminal dialogs
+- translator.py: child class of user with own functionality
+- user.py: user with base default functionality
+
+### operator -  operators
+Following operators where implemented for the application:
+- adminOperator.py: contains dialog functionality of the admin object and creates its instance
+- loginOperator.py: contains login mask and uses the authentication instance
+- translatorOperator.py: contains dialog functionality of the translator object and creates its instance
+- userOperator.py: contains dialog functionality of the user object and creates its instance
+
+### pattern - Design Patterns
+Following design patterns where used in this project:
+- null_object.py
+- singleton.py
+
+### exec.py - Execution of application
+The application gets started here and uses all aforementioned parts.
+
+
+## Getting started
+
+### 1. start the application
+navigate to the following directory:
+``` /Translation_Memory/app ```
+
+start the application:
+``` python3 exec.py ```
+
+### 2. login or continue
+For using the admin or translator functionalities you can sign in with following accounts:
+
+- admin
+``` username: admin ```
+``` password: 12345 ```
+
+- translator 1
+``` username: translator123 ```
+``` password: 123 ```
+
+- translator 2
+``` username: superdupernator```
+``` password: sdp2 ```
+
+You don't need to sign in for the user functionalities, just continue.
+
+### 3. start
+try the diverse optionalities of all users:
+- create words
+- add translations
+- assign languages 
+- etc ...
+
+have fun ;)
+
